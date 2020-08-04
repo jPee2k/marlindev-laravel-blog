@@ -5,10 +5,15 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class User extends Authenticatable
 {
     use Notifiable;
+
+    const IS_BANNED = 1;
+    const IS_ACTIVE = 0;
 
     /**
      * The attributes that are mass assignable.
@@ -45,5 +50,92 @@ class User extends Authenticatable
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+
+    public static function add($fields)
+    {
+        $user = new self;
+        $user->fill($fields);
+        $user->password = password_hash($fields['password'], PASSWORD_DEFAULT);
+        $user->save();
+
+        return $user;
+    }
+
+    public function edit($fields)
+    {
+        $this->fill($fields);
+        $this->password = password_hash($fields['password'], PASSWORD_DEFAULT);
+        $this->save();
+    }
+
+    public function remove()
+    {
+        Storage::delete('uploads/Avatars/' . $this->image);
+        $this->delete();
+    }
+
+    public function uploadAvatar($image)
+    {
+        if ($image == null) {
+            return;
+        }
+
+        Storage::delete('uploads/Avatars/' . $this->image);
+        $filename = uniqid(Str::random(5)) . '.' . $image->extension();
+        $image->saveAs('uploads', $filename);
+        $this->image = $filename;
+        $this->save();
+    }
+
+    public function getImage()
+    {
+        if ($this->image == null) {
+            return '/img/no-user-image.png';
+        }
+
+        return '/uploads/Avatars/' . $this->image;
+    }
+
+    public function setAdminAccess()
+    {
+        $this->is_admin = 1;
+        $this->save();
+    }
+
+    public function setUserAccess()
+    {
+        $this->is_admin = 0;
+        $this->save();
+    }
+
+    public function toggleAccess($value = null)
+    {
+        if ($value == null) {
+            return $this->setUserAccess();
+        }
+
+        return $this->setAdminAccess();
+    }
+
+    public function setBan()
+    {
+        $this->status = User::IS_BANNED;
+        $this->save();
+    }
+
+    public function setUnban()
+    {
+        $this->status = User::IS_ACTIVE;
+        $this->save();
+    }
+
+    public function toggleStatus($value = null)
+    {
+        if ($value == null) {
+            return $this->setUnban();
+        }
+
+        return $this->setBan();
     }
 }

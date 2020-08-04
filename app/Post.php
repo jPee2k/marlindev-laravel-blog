@@ -4,12 +4,19 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class Post extends Model
 {
     use Sluggable;
 
-    public function sluggable()
+    const IS_DRAFT = 0;
+    const IS_PUBLIC = 1;
+
+    protected $fillable = ['title', 'content'];
+
+    public function sluggable(): array
     {
         return [
             'slug' => [
@@ -18,7 +25,7 @@ class Post extends Model
         ];
     }
 
-    // Эти методы дают возможность работать
+    // Связи! Эти методы дают возможность работать
     // с сущностью через методы классов:
     // $post = Post::find(1);
     // $post->category->title   // название категории
@@ -44,4 +51,108 @@ class Post extends Model
         );
     }
 
+    // Методы реализующие бизнес-логику
+    public static function add($fields)
+    {
+        $post = new self;
+        $post->fill($fields);
+        $post->user_id = 1;
+        $post->save();
+
+        return $post;
+    }
+
+    public function edit($fields)
+    {
+        $this->fill($fields);
+        $this->save();
+    }
+
+    public function remove()
+    {
+        $this->delete();
+    }
+
+    public function udloadImage($image)
+    {
+        if ($image == null) {
+            return;
+        }
+
+        Storage::delete('uploads/' . $this->image);
+        $filename = uniqid(Str::random(5)) . '.' . $image->extension();
+        $image->saveAs('uploads', $filename);
+        $this->image = $filename;
+        $this->save();
+    }
+
+    public function setCategory($id)
+    {
+        if ($id == null) {
+            return;
+        }
+
+        $category = Category::find($id);
+        $this->category()->save($category);
+    }
+
+    public function setTags($ids)
+    {
+        if ($ids == null) {
+            return;
+        }
+
+        $this->tags()->sync($ids);
+    }
+
+    public function setDraft()
+    {
+        $this->status = Post::IS_DRAFT;
+        $this->save();
+    }
+
+    public function setPublic()
+    {
+        $this->status = Post::IS_PUBLIC;
+        $this->save();
+    }
+
+    public function toggleStatus($value)
+    {
+        if ($value == null) {
+            return $this->setDraft();
+        }
+
+        return $this->setPublic();
+    }
+
+    public function setFeatured()
+    {
+        $this->is_featured = true;
+        $this->save(); 
+    }
+
+    public function setStandart()
+    {
+        $this->is_featured = false;
+        $this->save();
+    }
+
+    public function toggleFeatured($value)
+    {
+        if ($value == null) {
+            return $this->setStandart();
+        }
+
+        return $this->setFeatured();
+    }
+
+    public function getImage()
+    {
+        if ($this->image == null) {
+            return '/img/no-image.png';
+        }
+
+        return '/uploads/' . $this->image;
+    }
 }
