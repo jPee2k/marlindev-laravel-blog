@@ -19,18 +19,18 @@
           <h3 class="box-title">Добавляем категорию</h3>
           @include('admin.errors')
         </div>
-        {{ Form::open(['route' => 'categories.store']) }}
+        {{ Form::model($category, ['url' => route('categories.store')]) }}
         <div class="box-body">
           <div class="col-md-6">
             <div class="form-group">
-              <label for="exampleInputEmail1">Название</label>
-              <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="title">
+              {{ Form::label('exampleInputEmail1', 'Название') }}
+              {{ Form::text('exampleInputEmail1', '', ['class' => 'form-control', 'placeholder' => 'type category name', 'name' => 'title']) }}
             </div>
           </div>
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
-          <button class="btn btn-default">Назад</button>
+          {{ Form::submit('Назад', ['class' => 'btn btn-default']) }}
           {{ Form::submit('Добавить', ['class' => 'btn btn-success pull-right']) }}
         </div>
         {{ Form::close() }}

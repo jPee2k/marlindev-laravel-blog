@@ -46,7 +46,9 @@
                       <a href="{{ route('categories.edit', $category) }}" class="fa fa-pencil"></a>
                       <!-- <a href="{{ route('categories.destroy', $category) }}" data-confirm="Вы уверены?" data-method="delete" class="fa fa-remove" rel="nofollow"></a> -->
                       {{ Form::open(['method' => 'DELETE', 'route' => ['categories.destroy', $category]]) }}
-                        {{ Form::button('', ['class' => 'fa fa-remove', 'class' => 'delete', 'rel' => 'nofollow', 'type' => 'submit']) }}
+                        <button onclick="return confirm('Are you sure?')" type="submit" class="delete">
+                          <i class='fa fa-remove'></i>
+                        </button>
                       {{ Form::close() }}
                     </td>
                   </tr>
