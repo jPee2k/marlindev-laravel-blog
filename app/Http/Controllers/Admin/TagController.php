@@ -15,7 +15,9 @@ class TagController extends Controller
      */
     public function index()
     {
-        //
+        $tags = Tag::paginate();
+
+        return view('admin.tag.index', compact('tags'));
     }
 
     /**
@@ -25,7 +27,9 @@ class TagController extends Controller
      */
     public function create()
     {
-        //
+        $tag = new \App\Tag();
+
+        return view('admin.tag.create', compact('tag'));
     }
 
     /**
@@ -36,7 +40,14 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required|max:32|min:2|unique:tags'
+        ]);
+
+        Tag::create($request->all());
+        $request->session()->flash('success', 'Тег успешно добавлен');
+
+        return redirect()->route('tags.index');
     }
 
     /**
@@ -58,7 +69,7 @@ class TagController extends Controller
      */
     public function edit(Tag $tag)
     {
-        //
+        return view('admin.tag.edit', compact('tag'));
     }
 
     /**
@@ -70,7 +81,14 @@ class TagController extends Controller
      */
     public function update(Request $request, Tag $tag)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required|max:32|min:2|unique:tags,title,' . $tag->id
+        ]);
+
+        $tag->update($request->all());
+        $request->session()->flash('success', 'Тег успешно изменен');
+
+        return redirect()->route('tags.index');
     }
 
     /**
@@ -79,8 +97,14 @@ class TagController extends Controller
      * @param  \App\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tag $tag)
+    public function destroy(Request $request, Tag $tag)
     {
-        //
+        if ($tag) {
+            $tag->delete();
+        }
+
+        $request->session()->flash('success', 'Тег успешно удален');
+
+        return redirect()->route('tags.index');
     }
 }

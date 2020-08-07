@@ -9,7 +9,9 @@ class Category extends Model
 {
     use Sluggable;
 
-    protected $fillable = ['title'];
+    protected $fillable = [
+        'title'
+    ];
 
     public function sluggable(): array
     {

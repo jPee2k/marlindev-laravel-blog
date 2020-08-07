@@ -22,12 +22,11 @@
       <div class="box">
             <div class="box-header">
               <h3 class="box-title">Листинг сущности</h3>
-              @include('admin.success')
             </div>
             <!-- /.box-header -->
             <div class="box-body">
               <div class="form-group">
-                <a href="{{ route('categories.create') }}" class="btn btn-success">Добавить</a>
+                <a href="{{ route('tags.create') }}" class="btn btn-success">Добавить</a>
               </div>
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
@@ -38,30 +37,34 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach ($categories as $category)
-                  <tr>
-                    <td>{{ $category->id }}</td>
-                    <td>{{ $category->title }}</td>
-                    <td>
-                      <a href="{{ route('categories.edit', $category) }}" class="fa fa-pencil"></a>
-                      <!-- <a href="{{ route('categories.destroy', $category) }}" data-confirm="Вы уверены?" data-method="delete" class="fa fa-remove" rel="nofollow"></a> -->
-                      {{ Form::open(['method' => 'delete', 'route' => ['categories.destroy', $category]]) }}
-                        <button data-confirm="Вы уверены?" type="submit" class="delete">
-                          <i class='fa fa-remove'></i>
-                        </button>
-                      {{ Form::close() }}
-                    </td>
-                  </tr>
-                @endforeach
+                    @foreach ($tags as $tag)
+                        <tr>
+                            <td>{{ $tag->id }}</td>
+                            <td>{{ $tag->title }}</td>
+                            <td>
+                                <a href="{{ route('tags.edit', $tag) }}" class="fa fa-pencil"></a>
+                                {{ Form::open(['method' => 'delete', 'route' => ['tags.destroy', $tag]]) }}
+                                    <button data-confirm="Вы уверены?" type="submit" class="delete">
+                                        <i class='fa fa-remove'></i>
+                                    </button>
+                                {{ Form::close() }}
+                                <!-- <a href="{{ route('tags.destroy', $tag) }}"
+                                  data-confirm="Вы уверены?"
+                                  data-method="delete"
+                                  rel="nofollow"
+                                  class="fa fa-remove">
+                                </a> -->
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
               </table>
             </div>
             <!-- /.box-body -->
-            <div>{{ $categories->links() }}</div>
           </div>
       <!-- /.box -->
 
     </section>
     <!-- /.content -->
   </div>
-  @endsection
+@endsection
