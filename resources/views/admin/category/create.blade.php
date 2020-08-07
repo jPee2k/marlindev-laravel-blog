@@ -20,15 +20,7 @@
           @include('admin.errors')
         </div>
         {{ Form::model($category, ['url' => route('categories.store')]) }}
-        <div class="box-body">
-          <div class="col-md-6">
-            <div class="form-group">
-              {{ Form::label('exampleInputEmail1', 'Название') }}
-              {{ Form::text('exampleInputEmail1', '', ['class' => 'form-control', 'placeholder' => 'type category name', 'name' => 'title']) }}
-            </div>
-          </div>
-        </div>
-        <!-- /.box-body -->
+        @include('admin.category.form')
         <div class="box-footer">
           {{ Form::submit('Назад', ['class' => 'btn btn-default']) }}
           {{ Form::submit('Добавить', ['class' => 'btn btn-success pull-right']) }}

@@ -19,21 +19,11 @@
           <h3 class="box-title">Меняем категорию</h3>
         </div>
         @include('admin.errors')
-        {{ Form::model($category, ['method' => 'PUT', 'route' => ['categories.update', $category->id]]) }}
-        <div class="box-body">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="exampleInputEmail1">Название</label>
-              <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="title" value="{{ $category->title }}">
-            </div>
-          </div>
-        </div>
-        <!-- /.box-body -->
+        {{ Form::model($category, ['method' => 'PATCH', 'url' => route('categories.update', $category)]) }}
+        @include('admin.category.form')
         <div class="box-footer">
-          <button class="btn btn-default">Назад</button>
-          <!-- <button class="btn btn-warning pull-right">Изменить</button> -->
-          <input type="submit" value="Изменить" data-disable-with="Сохраняем" class="btn btn-warning pull-right">
-        </div>
+          {{ Form::submit('Назад', ['class' => 'btn btn-default']) }}
+          {{ Form::submit('Изменить', ['class' => 'btn btn-success pull-right', 'data-disable-with' => 'Сохраняем']) }}
         {{ Form::close() }}
         <!-- /.box-footer-->
       </div>

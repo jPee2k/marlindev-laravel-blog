@@ -40,7 +40,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $data = $this->validate($request, [
-            'title' => 'required|unique:categories'
+            'title' => 'required|max:255|min:3|unique:categories'
         ]);
 
         //Category::create($request->all());
@@ -85,7 +85,7 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         $this->validate($request, [
-            'title' => 'required'
+            'title' => 'required|max:255|min:3|unique:categories,title,' . $category->id
         ]);
 
         $category->update($request->all());
