@@ -27,7 +27,7 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini" id="app">
 <!-- Site wrapper -->
 <div class="wrapper">
 
@@ -448,4 +448,5 @@
   <div class="control-sidebar-bg"></div>
 </div>
 <script src="/js/admin.js"></script>
+<script src="/js/app.js"></script>
 </html>
