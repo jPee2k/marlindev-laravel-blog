@@ -5,7 +5,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Добавить тег
+                Добавить пользователя
                 <small>приятные слова..</small>
             </h1>
         </section>
@@ -16,13 +16,17 @@
             <!-- Default box -->
             <div class="box">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Добавляем тег</h3>
+                    <h3 class="box-title">Добавляем пользователя</h3>
                     @include('admin.errors')
                 </div>
-                {{ Form::model($tag, ['url' => route('tags.store')]) }}
-                @include('admin.tag.form')
+                {{ Form::model($user, ['url' => route('users.store'), 'files' => 'true']) }}
+                <div class="box-body">
+                    <div class="col-md-6">
+                        @include('admin.user.form')
+                    </div>
+                </div>
+                <!-- /.box-body -->
                 <div class="box-footer">
-                    <a href="{{ route('tags.index') }}" class="btn btn-default">Назад</a>
                     {{ Form::submit('Добавить', ['class' => 'btn btn-success pull-right']) }}
                 </div>
                 {{ Form::close() }}

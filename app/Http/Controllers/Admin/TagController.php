@@ -27,7 +27,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        $tag = new \App\Tag();
+        $tag = new Tag();
 
         return view('admin.tag.create', compact('tag'));
     }

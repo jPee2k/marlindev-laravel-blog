@@ -52,16 +52,6 @@ class User extends Authenticatable
         return $this->hasMany(Comment::class);
     }
 
-    public static function add($fields)
-    {
-        $user = new self;
-        $user->fill($fields);
-        $user->password = password_hash($fields['password'], PASSWORD_DEFAULT);
-        $user->save();
-
-        return $user;
-    }
-
     public function edit($fields)
     {
         $this->fill($fields);
@@ -81,20 +71,24 @@ class User extends Authenticatable
             return;
         }
 
-        Storage::delete('uploads/Avatars/' . $this->image);
+        if ($this->avatar != null){
+            Storage::delete('uploads/Avatars/' . $this->avatar);
+        }
+        
         $filename = uniqid(Str::random(5)) . '.' . $image->extension();
-        $image->saveAs('uploads', $filename);
-        $this->image = $filename;
+        // dd(get_class_methods($image));
+        $image->storeAs('uploads/avatars', $filename);
+        $this->avatar = $filename;
         $this->save();
     }
 
     public function getImage()
     {
-        if ($this->image == null) {
+        if ($this->avatar == null) {
             return '/img/no-user-image.png';
         }
 
-        return '/uploads/Avatars/' . $this->image;
+        return '/uploads/avatars/' . $this->avatar;
     }
 
     public function setAdminAccess()

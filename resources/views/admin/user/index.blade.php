@@ -21,38 +21,39 @@
             <!-- Default box -->
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Список категорий</h3>
+                    <h3 class="box-title">Список пользователей</h3>
                     @include('admin.success')
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
                     <div class="form-group">
-                        <a href="{{ route('categories.create') }}" class="btn btn-success">Добавить</a>
+                        <a href="{{ route('users.create') }}" class="btn btn-success">Добавить</a>
                     </div>
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Название</th>
+                                <th>Имя</th>
+                                <th>E-mail</th>
+                                <th>Аватар</th>
                                 <th>Действия</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($categories as $category)
+                            @foreach ($users as $user)
                                 <tr>
-                                    <td>{{ $category->id }}</td>
-                                    <td>{{ $category->title }}</td>
+                                    <td>{{ $user->id }}</td>
+                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->email }}</td>
                                     <td>
-                                        <a href="{{ route('categories.edit', $category) }}" class="fa fa-pencil"></a>
-                                        <!-- <a href="{{ route('categories.destroy', $category) }}"
-                                            data-confirm="Вы уверены?"
-                                            data-method="delete" class="fa fa-remove"
-                                            rel="nofollow">
-                                          </a> -->
-                                        {{ Form::open(['method' => 'delete', 'route' => ['categories.destroy', $category]]) }}
-                                        <button data-confirm="Вы уверены?" type="submit" class="delete">
-                                            <i class='fa fa-remove'></i>
-                                        </button>
+                                        <img src="{{ $user->getImage() }}" alt="" class="img-responsive" width="100">
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('users.edit', $user) }}" class="fa fa-pencil"></a>
+                                        {{ Form::open(['method' => 'delete', 'route' => ['users.destroy', $user]]) }}
+                                            <button data-confirm="Вы уверены?" type="submit" class="delete">
+                                                <i class='fa fa-remove'></i>
+                                            </button>
                                         {{ Form::close() }}
                                     </td>
                                 </tr>
@@ -61,8 +62,8 @@
                     </table>
                 </div>
                 <!-- /.box-body -->
-                <div>{{ $categories->links() }}</div>
             </div>
+            <div>{{ $users->links() }}</div>
             <!-- /.box -->
 
         </section>

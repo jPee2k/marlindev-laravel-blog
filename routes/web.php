@@ -22,4 +22,5 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
         ->name('dashboard.index');
     Route::resource('/categories', 'CategoryController');
     Route::resource('/tags', 'TagController');
+    Route::resource('/users', 'UserController');
 });
