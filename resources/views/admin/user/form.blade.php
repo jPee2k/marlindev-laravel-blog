@@ -18,5 +18,8 @@
     {{ Form::label('avatar', 'Аватар') }}
     {{ Form::file('avatar', ['name' => 'avatar']) }}
 
-    <p class="help-block">Форматы изображения - jpg, bmp, png, gif, svg</p>
+    <p class="help-block">
+        Форматы изображения: jpg, bmp, png, gif, svg<br>
+        Максимальный размер изображения: 256 kB
+    </p>
 </div>

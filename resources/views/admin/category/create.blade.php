@@ -23,7 +23,7 @@
                 @include('admin.category.form')
                 <div class="box-footer">
                     <a href="{{ route('categories.index') }}" class="btn btn-default">Назад</a>
-                    {{ Form::submit('Добавить', ['class' => 'btn btn-success pull-right']) }}
+                    {{ Form::submit('Добавить', ['class' => 'btn btn-success pull-right', 'data-disable-with' => 'Сохраняем']) }}
                 </div>
                 {{ Form::close() }}
                 <!-- /.box-footer-->

@@ -23,7 +23,7 @@
                 @include('admin.tag.form')
                 <div class="box-footer">
                     <a href="{{ route('tags.index') }}" class="btn btn-default">Назад</a>
-                    {{ Form::submit('Добавить', ['class' => 'btn btn-success pull-right']) }}
+                    {{ Form::submit('Добавить', ['class' => 'btn btn-success pull-right', 'data-disable-with' => 'Сохраняем']) }}
                 </div>
                 {{ Form::close() }}
                 <!-- /.box-footer-->

@@ -52,19 +52,6 @@ class User extends Authenticatable
         return $this->hasMany(Comment::class);
     }
 
-    public function edit($fields)
-    {
-        $this->fill($fields);
-        $this->password = password_hash($fields['password'], PASSWORD_DEFAULT);
-        $this->save();
-    }
-
-    public function remove()
-    {
-        Storage::delete('uploads/Avatars/' . $this->image);
-        $this->delete();
-    }
-
     public function uploadAvatar($image)
     {
         if ($image == null) {
@@ -89,6 +76,12 @@ class User extends Authenticatable
         }
 
         return '/uploads/avatars/' . $this->avatar;
+    }
+
+    public function remove()
+    {
+        Storage::delete('uploads/Avatars/' . $this->avatar);
+        $this->delete();
     }
 
     public function setAdminAccess()
