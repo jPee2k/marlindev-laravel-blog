@@ -52,7 +52,7 @@
                                     </td>
                                     <td>
                                         <a href="{{ route('posts.edit', $post) }}" class="fa fa-pencil"></a>
-                                        {{ Form::open(['method' => 'delete', 'route' => ['categories.destroy', $category]]) }}
+                                        {{ Form::open(['method' => 'delete', 'route' => ['posts.destroy', $post]]) }}
                                         <button data-confirm="Вы уверены?" type="submit" class="delete">
                                             <i class='fa fa-remove'></i>
                                         </button>

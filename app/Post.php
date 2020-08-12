@@ -14,7 +14,7 @@ class Post extends Model
     const IS_DRAFT = 0;
     const IS_PUBLIC = 1;
 
-    protected $fillable = ['title', 'content'];
+    protected $fillable = ['title', 'content', 'date'];
 
     public function sluggable(): array
     {
@@ -33,12 +33,12 @@ class Post extends Model
     
     public function category()
     {
-        return $this->hasOne(Category::class);
+        return $this->belongsTo(Category::class);
     }
 
     public function author()
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function tags()
@@ -52,16 +52,6 @@ class Post extends Model
     }
 
     // Методы реализующие бизнес-логику
-    public static function add($fields)
-    {
-        $post = new self;
-        $post->fill($fields);
-        $post->user_id = 1;
-        $post->save();
-
-        return $post;
-    }
-
     public function edit($fields)
     {
         $this->fill($fields);
@@ -70,22 +60,43 @@ class Post extends Model
 
     public function remove()
     {
+        $this->removeImage();
         $this->delete();
     }
 
-    public function udloadImage($image)
+
+    // Методы для работы с картинками
+    public function uploadImage($image)
     {
         if ($image == null) {
             return;
         }
 
-        Storage::delete('uploads/images' . $this->image);
+        $this->removeImage();
+
         $filename = uniqid(Str::random(5)) . '.' . $image->extension();
         $image->storeAs('uploads/images', $filename);
         $this->image = $filename;
         $this->save();
     }
 
+    public function removeImage()
+    {
+        if ($this->image != null) {
+            Storage::delete('uploads/images' . $this->image);
+        }
+    }
+
+    public function getImage()
+    {
+        if ($this->image == null) {
+            return '/img/no-image.png';
+        }
+
+        return '/uploads/images' . $this->image;
+    }
+
+    // Доп параметры поста
     public function setCategory($id)
     {
         if ($id == null) {
@@ -145,14 +156,5 @@ class Post extends Model
         }
 
         return $this->setFeatured();
-    }
-
-    public function getImage()
-    {
-        if ($this->image == null) {
-            return '/img/no-image.png';
-        }
-
-        return '/uploads/images' . $this->image;
     }
 }

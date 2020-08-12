@@ -23,26 +23,30 @@
     </div>
     <!-- Date -->
     <div class="form-group">
-        {{ Form::label('datepicker', 'Дата:') }}
-        <div class="input-group date">
+        {{ Form::label('date', 'Дата:') }}
+        <div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy">
             <div class="input-group-addon">
                 <i class="fa fa-calendar"></i>
             </div>
-            {{ Form::text('datepicker', $post->date, ['class' => 'form-control pull-right']) }}
+            {{ Form::text('date', $post->date, ['class' => 'form-control pull-right']) }}
         </div>
         <!-- /.input group -->
     </div>
 
     <!-- checkbox -->
     <div class="form-group">
-        {{ Form::checkbox('is_featured', $post->is_featured, false, ['class' => 'minimal']) }}
-        <b>Рекомендовать</b>
+        <label>
+            {{ Form::checkbox('is_featured', $post->is_featured, false, ['class' => 'minimal']) }}
+            <b>Рекомендовать</b>
+        </label>
     </div>
 
     <!-- checkbox -->
     <div class="form-group">
-        {{ Form::checkbox('status', $post->status, false, ['class' => 'minimal']) }}
-        <b>Черновик</b>
+        <label>
+            {{ Form::checkbox('status', $post->status, false, ['class' => 'minimal']) }}
+            <b id="status">Черновик</b>
+        </label>
     </div>
 </div>
 <div class="col-md-12">

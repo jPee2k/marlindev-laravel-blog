@@ -24,7 +24,7 @@ class StoreUser extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:3|max:255',
+            'name' => 'required|min:3|max:255|alpha',
             'email' => 'required|unique:users|email',
             'password' => 'min:6|max:255|required|confirmed',
             'avatar' => 'nullable|image|max:256'
