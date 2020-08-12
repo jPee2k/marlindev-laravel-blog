@@ -58,9 +58,7 @@ class User extends Authenticatable
             return;
         }
 
-        if ($this->avatar != null){
-            Storage::delete('uploads/Avatars/' . $this->avatar);
-        }
+        $this->removeAvatar();
         
         $filename = uniqid(Str::random(5)) . '.' . $image->extension();
         // dd(get_class_methods($image));
@@ -80,8 +78,15 @@ class User extends Authenticatable
 
     public function remove()
     {
-        Storage::delete('uploads/Avatars/' . $this->avatar);
+        $this->removeAvatar();
         $this->delete();
+    }
+
+    public function removeAvatar()
+    {
+        if ($this->avatar != null){
+            Storage::delete('uploads/avatars/' . $this->avatar);
+        }
     }
 
     public function setAdminAccess()

@@ -108,8 +108,11 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(Request $request, User $user)
     {
-        //
+        $user->remove();
+        $request->session()->flash('success', 'Пользователь успешно удален');
+        
+        return redirect()->route('users.index');
     }
 }

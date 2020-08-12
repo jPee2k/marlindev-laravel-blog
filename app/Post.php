@@ -79,9 +79,9 @@ class Post extends Model
             return;
         }
 
-        Storage::delete('uploads/' . $this->image);
+        Storage::delete('uploads/images' . $this->image);
         $filename = uniqid(Str::random(5)) . '.' . $image->extension();
-        $image->saveAs('uploads', $filename);
+        $image->storeAs('uploads/images', $filename);
         $this->image = $filename;
         $this->save();
     }
@@ -153,6 +153,6 @@ class Post extends Model
             return '/img/no-image.png';
         }
 
-        return '/uploads/' . $this->image;
+        return '/uploads/images' . $this->image;
     }
 }
