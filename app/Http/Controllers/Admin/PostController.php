@@ -48,16 +48,19 @@ class PostController extends Controller
         $data = $this->validate($request, [
             'title' => 'required|min:5|max:255|unique:posts',
             'content' => 'required|min:255',
-            'image' => 'max:2048|image|nullable'
+            'image' => 'nullable|image|max:2048',
+            'date' => 'nullable'
         ]);
 
         $post = new Post();
         $post->fill($data);
         $post->user_id = 1; // todo after autorize
         $post->uploadImage($request->file('image'));
-        // $post->setCategory($request->get('category_id'));
-        // $post->setTags($request->get('tags'));
+        $post->setCategory($request->get('category_id'));
+        $post->setTags($request->get('tags'));
 
+        $post->date = $post->date ?? now();
+        
         $post->toggleFeatured($request->get('is_featured'));
         $post->toggleStatus($request->get('status'));
 
@@ -85,7 +88,10 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        $tags = Tag::pluck('title', 'id')->all();
+        $categories = Category::pluck('title', 'id')->all();
+
+        return view('admin.post.edit', compact('post', 'tags', 'categories'));
     }
 
     /**
@@ -97,7 +103,27 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $data = $this->validate($request, [
+            'title' => 'required|min:5|max:255|unique:posts',
+            'content' => 'required|min:255',
+            'image' => 'nullable|image|max:2048',
+            'date' => 'nullable'
+        ]);
+
+        $post->fill($data);
+        $post->user_id = 1; // todo after autorize
+        $post->uploadImage($request->file('image'));
+        $post->setCategory($request->get('category_id'));
+        $post->setTags($request->get('tags'));
+
+        $post->date = $post->date ?? now();
+        
+        $post->toggleFeatured($request->get('is_featured'));
+        $post->toggleStatus($request->get('status'));
+
+        $post->save();
+
+        return redirect()->route('posts.index');
     }
 
     /**

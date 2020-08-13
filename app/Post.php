@@ -30,7 +30,7 @@ class Post extends Model
     // $post = Post::find(1);
     // $post->category->title   // название категории
     // $post->author->email     // эл. адрес пользователя
-    
+
     public function category()
     {
         return $this->belongsTo(Category::class);
@@ -83,7 +83,7 @@ class Post extends Model
     public function removeImage()
     {
         if ($this->image != null) {
-            Storage::delete('uploads/images' . $this->image);
+            Storage::delete('uploads/images/' . $this->image);
         }
     }
 
@@ -93,7 +93,7 @@ class Post extends Model
             return '/img/no-image.png';
         }
 
-        return '/uploads/images' . $this->image;
+        return '/uploads/images/' . $this->image;
     }
 
     // Доп параметры поста
@@ -103,8 +103,11 @@ class Post extends Model
             return;
         }
 
-        $category = Category::find($id);
-        $this->category()->save($category);
+        $this->category_id = $id;
+        $this->save();
+
+        // $category = Category::find($id);
+        // $this->category()->save($category);
     }
 
     public function setTags($ids)
@@ -140,7 +143,7 @@ class Post extends Model
     public function setFeatured()
     {
         $this->is_featured = true;
-        $this->save(); 
+        $this->save();
     }
 
     public function setStandart()
@@ -156,5 +159,20 @@ class Post extends Model
         }
 
         return $this->setFeatured();
+    }
+
+    public function getCategoryTitle()
+    {
+        if ($this->category != null) {
+            return $this->category->title;
+        }
+    }
+
+    public function getTagsTitles()
+    {
+        if (!$this->tags->isEmpty()) {
+            $tags = $this->tags->pluck('title')->all();
+            return implode(', ', $tags);
+        }
     }
 }

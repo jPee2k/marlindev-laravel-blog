@@ -19,7 +19,7 @@
                     <h3 class="box-title">Добавляем статью</h3>
                     @include('admin.errors')
                 </div>
-                {{ Form::model($post, ['url' => route('posts.store'), 'file' => true]) }}
+                {{ Form::model($post, ['url' => route('posts.store'), 'files' => true]) }}
                 <div class="box-body">
                     @include('admin.post.form')
                 </div>
