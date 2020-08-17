@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Support\Carbon;
 
 class Post extends Model
 {
@@ -174,5 +175,15 @@ class Post extends Model
             $tags = $this->tags->pluck('title')->all();
             return implode(', ', $tags);
         }
+    }
+
+
+    public function getDateAttribute($value)
+    {
+        if ($value == null) {
+            return;
+        }
+
+        return Carbon::createFromFormat('yy-m-d', $value)->format('d-m-yy');
     }
 }

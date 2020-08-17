@@ -6,6 +6,10 @@
 
     <div class="form-group">
         {{ Form::label('image', 'Лицевая картинка') }}
+        <!-- todo Выводить картинку при редактировании (admin.post.inc.image)-->
+        <div class="posts-images-border">
+            <img src="{{ $post->getImage() }}" alt="" width="100">
+        </div>
         {{ Form::file('image') }}
 
         <p class="help-block">
@@ -24,7 +28,7 @@
     <!-- Date -->
     <div class="form-group">
         {{ Form::label('date', 'Дата:') }}
-        <div class="input-group date" data-provide="datepicker" data-date-format="dd/mm/yyyy">
+        <div class="input-group date" data-provide="datepicker" data-date-format="dd-mm-yyyy">
             <div class="input-group-addon">
                 <i class="fa fa-calendar"></i>
             </div>
@@ -44,7 +48,7 @@
     <!-- checkbox -->
     <div class="form-group">
         <label>
-            {{ Form::checkbox('status', $post->status, false, ['class' => 'minimal']) }}
+            {{ Form::checkbox('status', $post->status, false, ['class' => 'minimal', 'checked']) }}
             <b id="status">Черновик</b>
         </label>
     </div>

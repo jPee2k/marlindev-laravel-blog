@@ -84,14 +84,9 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(StoreUser $request, User $user)
     {
-        $data = $this->validate($request, [
-            'name' => 'required|min:3|max:255|alpha',
-            'email' => 'required|email|unique:users,email,' . $user->id,
-            'password' => 'min:6|max:255|required|confirmed',
-            'avatar' => 'nullable|image|max:256'
-        ]);
+        $data = $request->validated();
 
         $user->fill($data);
         $user->password = password_hash($data['password'], PASSWORD_DEFAULT);
@@ -99,6 +94,7 @@ class UserController extends Controller
         $user->save();
 
         $request->session()->flash('success', 'Пользовательские данные успешно обновлены');
+
         return redirect()->route('users.index');
     }
 

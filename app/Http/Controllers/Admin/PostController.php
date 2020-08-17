@@ -7,6 +7,7 @@ use App\Post;
 use App\Tag;
 use App\Category;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreBlogPost;
 
 class PostController extends Controller
 {
@@ -43,27 +44,21 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreBlogPost $request)
     {
-        $data = $this->validate($request, [
-            'title' => 'required|min:5|max:255|unique:posts',
-            'content' => 'required|min:255',
-            'image' => 'nullable|image|max:2048',
-            'date' => 'nullable'
-        ]);
+        $data = $request->validated();
 
         $post = new Post();
         $post->fill($data);
+
         $post->user_id = 1; // todo after autorize
         $post->uploadImage($request->file('image'));
         $post->setCategory($request->get('category_id'));
         $post->setTags($request->get('tags'));
-
-        $post->date = $post->date ?? now();
-        
         $post->toggleFeatured($request->get('is_featured'));
         $post->toggleStatus($request->get('status'));
 
+        $post->date = $post->date ?? now();
         $post->save();
 
         return redirect()->route('posts.index');
@@ -101,26 +96,19 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(StoreBlogPost $request, Post $post)
     {
-        $data = $this->validate($request, [
-            'title' => 'required|min:5|max:255|unique:posts',
-            'content' => 'required|min:255',
-            'image' => 'nullable|image|max:2048',
-            'date' => 'nullable'
-        ]);
+        $data = $request->validated();
 
         $post->fill($data);
         $post->user_id = 1; // todo after autorize
         $post->uploadImage($request->file('image'));
         $post->setCategory($request->get('category_id'));
         $post->setTags($request->get('tags'));
-
-        $post->date = $post->date ?? now();
-        
         $post->toggleFeatured($request->get('is_featured'));
         $post->toggleStatus($request->get('status'));
 
+        $post->date = $post->date ?? now();
         $post->save();
 
         return redirect()->route('posts.index');
@@ -134,6 +122,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->remove();
+
+        return redirect()->route('posts.index');
     }
 }

@@ -1267,3 +1267,7 @@ button.delete {
     color: #337ab7;
     padding: 0px;
 }
+
+.posts-images-border {
+    padding: 12px;
+}
