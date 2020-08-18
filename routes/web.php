@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@index')
     ->name('home.index');
+Route::get('/about-me', 'HomeController@aboutme')
+    ->name('home.aboutme');
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
     Route::get('/', 'DashboardController@index')
