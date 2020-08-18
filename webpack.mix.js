@@ -11,6 +11,7 @@ const mix = require('laravel-mix');
  |
  */
 
+// Admin-mix
 mix.styles([
     'resources/assets/admin/bootstrap/css/bootstrap.min.css',
     'resources/assets/admin/font-awesome/4.5.0/css/font-awesome.min.css',
@@ -37,12 +38,39 @@ mix.scripts([
     'resources/assets/admin/plugins/iCheck/icheck.min.js',
     'resources/assets/admin/plugins/datatables/jquery.dataTables.min.js',
     'resources/assets/admin/plugins/datatables/dataTables.bootstrap.min.js',
-    'resource/assets/admin/dist/js/scripts.js'
+    'resources/assets/admin/dist/js/scripts.js',
+    'resources/assets/admin/plugins/ckeditor/start.js'
 ], 'public/js/admin.js');
+
+mix.js('resources/js/bootstrap.js', 'public/js');
+mix.js('resources/js/app.js', 'public/js');
 
 mix.copy('resources/assets/admin/bootstrap/fonts', 'public/fonts');
 mix.copy('resources/assets/admin/dist/fonts', 'public/fonts');
 mix.copy('resources/assets/admin/dist/img', 'public/img');
 mix.copy('resources/assets/admin/plugins/iCheck/minimal/blue.png', 'public/css');
 
-mix.js('resources/js/app.js', 'public/js');
+
+// Main-public-mix
+mix.styles([
+    'resources/assets/blog/css/bootstrap.min.css',
+    'resources/assets/blog/css/animate.min.css',
+    'resources/assets/blog/css/owl.carousel.css',
+    'resources/assets/blog/css/owl.theme.css',
+    'resources/assets/blog/css/owl.transitions.css',
+    'resources/assets/blog/css/style.css',
+    'resources/assets/blog/css/responsive.css'
+], 'public/css/blog.css');
+
+mix.scripts([
+    'resources/assets/blog/js/jquery-1.11.3.min.js',
+    'resources/assets/blog/js/bootstrap.min.js',
+    'resources/assets/blog/js/owl.carousel.min.js',
+    'resources/assets/blog/js/jquery.stickit.min.js',
+    'resources/assets/blog/js/menu.js',
+    'resources/assets/blog/js/scripts.js',
+    'resources/assets/blog/js/map.js'
+], 'public/js/blog.js');
+
+mix.copy('resources/assets/blog/fonts', 'public/fonts');
+mix.copy('resources/assets/blog/images', 'public/img/blog');
