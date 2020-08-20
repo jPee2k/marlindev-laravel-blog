@@ -61,7 +61,6 @@
                     </table>
                 </div>
                 <!-- /.box-body -->
-                <div>{{ $categories->links() }}</div>
             </div>
             <!-- /.box -->
 

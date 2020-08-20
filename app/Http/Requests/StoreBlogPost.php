@@ -31,6 +31,7 @@ class StoreBlogPost extends FormRequest
                 'max:255',
                 Rule::unique('posts', 'title')->ignore($this->post)
             ],
+            'description' => 'required|min:255|max:2000',
             'content' => 'required|min:255',
             'image' => 'nullable|image|max:2048',
             'date' => 'nullable'
@@ -46,6 +47,7 @@ class StoreBlogPost extends FormRequest
     {
         return [
             'title.required' => 'Название обязательно к заполнению!',
+            'title.min' => 'Минимум 5 символов',
             'name.required' => 'Name is required!',
             'password.required' => 'Password is required!'
         ];

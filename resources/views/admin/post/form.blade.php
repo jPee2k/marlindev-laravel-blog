@@ -40,7 +40,7 @@
     <!-- checkbox -->
     <div class="form-group">
         <label>
-            {{ Form::checkbox('is_featured', $post->is_featured, false, ['class' => 'minimal']) }}
+            {{ Form::checkbox('is_featured', $post->is_featured, false) }}
             <b>Рекомендовать</b>
         </label>
     </div>
@@ -48,12 +48,20 @@
     <!-- checkbox -->
     <div class="form-group">
         <label>
-            {{ Form::checkbox('status', $post->status, false, ['class' => 'minimal', 'checked']) }}
+            {{ Form::checkbox('status', $post->status, false, ['checked']) }}
             <b id="status">Черновик</b>
         </label>
     </div>
 </div>
 <div class="col-md-12">
+    <div class="form-group">
+        {{ Form::label('description', 'Описание публикации') }}
+        {{ Form::textarea('description', $post->description, [
+            'class' => 'form-control',
+            'cols' => '30',
+            'rows' => '10',
+        ]) }}
+    </div>
     <div class="form-group">
         {{ Form::label('content', 'Полный текст') }}
         {{ Form::textarea('content', $post->content, [

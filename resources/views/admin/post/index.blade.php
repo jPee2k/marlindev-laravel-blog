@@ -66,7 +66,7 @@
                 <!-- /.box-body -->
             </div>
             <!-- /.box -->
-            <div>{{ $posts->links() }}</div>
+            
         </section>
         <!-- /.content -->
     </div>

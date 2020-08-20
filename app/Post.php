@@ -15,7 +15,7 @@ class Post extends Model
     const IS_DRAFT = 0;
     const IS_PUBLIC = 1;
 
-    protected $fillable = ['title', 'content', 'date'];
+    protected $fillable = ['title', 'content', 'date', 'description'];
 
     public function sluggable(): array
     {
@@ -53,12 +53,6 @@ class Post extends Model
     }
 
     // Методы реализующие бизнес-логику
-    public function edit($fields)
-    {
-        $this->fill($fields);
-        $this->save();
-    }
-
     public function remove()
     {
         $this->removeImage();
@@ -177,13 +171,10 @@ class Post extends Model
         }
     }
 
-
     public function getDateAttribute($value)
     {
-        if ($value == null) {
-            return;
+        if ($value !== null) {
+            return Carbon::parse($value)->format('d-m-Y');
         }
-
-        return Carbon::createFromFormat('yy-m-d', $value)->format('d-m-yy');
     }
 }
