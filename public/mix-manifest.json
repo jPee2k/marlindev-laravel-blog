@@ -1,8 +1,8 @@
 {
     "/js/app.js": "/js/app.js",
-    "/js/bootstrap.js": "/js/bootstrap.js",
     "/css/admin.css": "/css/admin.css",
     "/js/admin.js": "/js/admin.js",
+    "/css/bootstrap.min.css.map": "/css/bootstrap.min.css.map",
     "/css/blue.png": "/css/blue.png",
     "/css/blog.css": "/css/blog.css",
     "/js/blog.js": "/js/blog.js",

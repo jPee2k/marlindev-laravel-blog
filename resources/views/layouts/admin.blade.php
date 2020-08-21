@@ -210,8 +210,8 @@
                 <ul class="sidebar-menu">
                     <li class="header">MAIN NAVIGATION</li>
                     <li class="treeview">
-                        <a href="{{ route('dashboard.index') }}">
-                            <i class="fa fa-dashboard"></i> <span>Админ-панель</span>
+                        <a href="{{ route('pages.index') }}">
+                            <i class="fa fa-dashboard"></i> <span>На главную</span>
                         </a>
                     </li>
                     <li><a href="{{ route('posts.index') }}"><i class="fa fa-sticky-note-o"></i> <span>Посты</span></a>
@@ -446,10 +446,9 @@
        immediately after the control sidebar -->
         <div class="control-sidebar-bg"></div>
     </div>
-    <script src="/js/admin.js"></script>
-    <script src="/js/bootstrap.js"></script>
-    <script src="/js/app.js"></script>
     <script src="/plugins/ckeditor/ckeditor.js"></script>
     <script src="/plugins/ckfinder/ckfinder.js"></script>
+    <script src="/js/admin.js"></script>
+    <script src="/js/app.js"></script>
 
 </html>

@@ -158,7 +158,7 @@ class Post extends Model
 
     public function getCategoryTitle()
     {
-        if ($this->category != null) {
+        if ($this->category !== null) {
             return $this->category->title;
         }
     }
@@ -176,5 +176,34 @@ class Post extends Model
         if ($value !== null) {
             return Carbon::parse($value)->format('d-m-Y');
         }
+    }
+
+    public function hasPrevious()
+    {
+        return self::where('id', '<', $this->id)->max('id');
+    }
+
+    public function getPrevious()
+    {
+        $postID = $this->hasPrevious();
+
+        return self::findOrFail($postID);
+    }
+
+    public function hasNext()
+    {
+        return self::where('id', '>', $this->id)->min('id');
+    }
+
+    public function getNext()
+    {
+        $postID = $this->hasNext();
+
+        return self::findOrFail($postID);
+    }
+
+    public function related()
+    {
+        return self::all()->except($this->id);
     }
 }

@@ -13,12 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'HomeController@index')
-    ->name('home.index');
-Route::get('/about-me', 'HomeController@aboutme')
-    ->name('home.aboutme');
+Route::get('/', 'PageController@index')
+    ->name('pages.index');
 
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
+Route::get('/about-me', 'PageController@about')
+    ->name('pages.about');
+
+Route::get('/post/{slug}', 'PageController@show')
+    ->name('pages.show');
+
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('/', 'DashboardController@index')
         ->name('dashboard.index');
     Route::resource('/categories', 'CategoryController');
