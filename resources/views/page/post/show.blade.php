@@ -9,13 +9,14 @@
                 <div class="col-md-8">
                     <article class="post">
                         <div class="post-thumb">
-                            <a href="{{ route('pages.show', $post->slug) }}"><img src="{{ $post->getImage() }}" alt=""></a>
+                            <a href="{{ route('post.show', $post->slug) }}"><img src="{{ $post->getImage() }}" alt=""></a>
                         </div>
                         <div class="post-content">
                             <header class="entry-header text-center text-uppercase">
-                                <h6><a href="#">{{ $post->getCategoryTitle() }}</a></h6>
-                                <h1 class="entry-title"><a
-                                        href="{{ route('pages.show', $post->slug) }}">{{ $post->title }}</a></h1>
+                                @include('page.post.category')
+                                <h1 class="entry-title">
+                                    {{ $post->title }}
+                                </h1>
 
                             </header>
                             <div class="entry-content">
@@ -23,7 +24,9 @@
                             </div>
                             <div class="decoration">
                                 @foreach ($post->tags as $tag)
-                                    <a href="#" class="btn btn-default">{{ $tag->title }}</a>
+                                    <a href="{{ route('tag.show', $tag->slug) }}" class="btn btn-default">
+                                        {{ $tag->title }}
+                                    </a>
                                 @endforeach
                             </div>
 
@@ -55,7 +58,7 @@
                         <div class="col-md-6">
                             @if ($post->hasPrevious())
                                 <div class="single-blog-box">
-                                    <a href="{{ route('pages.show', $post->getPrevious()->slug) }}">
+                                    <a href="{{ route('post.show', $post->getPrevious()->slug) }}">
                                         <img src="{{ $post->getPrevious()->getImage() }}" alt="">
 
                                         <div class="overlay">
@@ -72,7 +75,7 @@
                         <div class="col-md-6">
                             @if ($post->hasNext())
                                 <div class="single-blog-box">
-                                    <a href="{{ route('pages.show', $post->getNext()->slug) }}">
+                                    <a href="{{ route('post.show', $post->getNext()->slug) }}">
                                         <img src="{{ $post->getNext()->getImage() }}" alt="">
 
                                         <div class="overlay">
@@ -96,7 +99,7 @@
                         <div class="items">
                             @foreach ($post->related() as $item)
                                 <div class="single-item">
-                                    <a href="{{ route('pages.show', $item->slug) }}">
+                                    <a href="{{ route('post.show', $item->slug) }}">
                                         <img src="{{ $item->getImage() }}" alt="">
 
                                         <p>{{ $item->title }}</p>

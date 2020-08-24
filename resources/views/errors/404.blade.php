@@ -32,10 +32,10 @@
                 <h1>Oops!</h1>
                 <h2>404 - The Page can't be found</h2>
             </div>
-            <a href="{{ route('pages.index') }}">Go TO Homepage</a>
+            <a href="{{ route('main.index') }}">Go TO Homepage</a>
         </div>
     </div>
 
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</body>
 
 </html>

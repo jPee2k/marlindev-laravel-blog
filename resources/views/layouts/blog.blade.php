@@ -40,14 +40,13 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="{{ route('pages.index') }}"><img src="/img/blog/logo.png" alt=""></a>
+                    <a class="navbar-brand" href="{{ route('main.index') }}"><img src="/img/blog/logo.png" alt=""></a>
                 </div>
-
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                     <ul class="nav navbar-nav text-uppercase">
-                        <li><a href="{{ route('pages.index') }}">Homepage</a></li>
+                        <li><a href="{{ route('main.index') }}">Homepage</a></li>
                         <li><a href="{{ route('pages.about') }}" target="_blank">ABOUT ME </a></li>
                         <li><a href="contact.html">CONTACT</a></li>
                     </ul>

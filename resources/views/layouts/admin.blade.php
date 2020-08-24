@@ -210,7 +210,7 @@
                 <ul class="sidebar-menu">
                     <li class="header">MAIN NAVIGATION</li>
                     <li class="treeview">
-                        <a href="{{ route('pages.index') }}">
+                        <a href="{{ route('main.index') }}">
                             <i class="fa fa-dashboard"></i> <span>На главную</span>
                         </a>
                     </li>

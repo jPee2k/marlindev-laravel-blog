@@ -13,14 +13,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'PageController@index')
-    ->name('pages.index');
+Route::get('/', 'PostController@index')
+    ->name('main.index');
+
+Route::get('/posts/{slug}', 'PostController@show')
+    ->name('post.show');
+
+Route::get('tags/{slug}', 'PageController@tag')
+    ->name('tag.show');
+
+Route::get('categories/{slug}', 'PageController@category')
+    ->name('category.show');
 
 Route::get('/about-me', 'PageController@about')
     ->name('pages.about');
-
-Route::get('/post/{slug}', 'PageController@show')
-    ->name('pages.show');
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('/', 'DashboardController@index')
