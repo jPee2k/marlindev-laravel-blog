@@ -22,7 +22,7 @@
                 {{ Form::model($user, ['url' => route('users.store'), 'files' => 'true']) }}
                 <div class="box-body">
                     <div class="col-md-6">
-                        @include('admin.user.form')
+                        @include('admin.user.inc.form')
                     </div>
                 </div>
                 <!-- /.box-body -->

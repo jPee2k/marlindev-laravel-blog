@@ -19,6 +19,7 @@ mix.styles([
     'resources/assets/admin/dist/css/AdminLTE.min.css',
     'resources/assets/admin/dist/css/skins/_all-skins.min.css',
     'resources/assets/admin/plugins/iCheck/all.css',
+    'resources/assets/admin/plugins/iCheck/minimal/_all.css',
     'resources/assets/admin/plugins/datepicker/datepicker3.css',
     'resources/assets/admin/plugins/select2/select2.min.css',
     'resources/assets/admin/plugins/datatables/dataTables.bootstrap.css',
@@ -30,16 +31,16 @@ mix.scripts([
     'resources/assets/admin/bootstrap/js/bootstrap.min.js',
     'resources/assets/admin/plugins/slimScroll/jquery.slimscroll.min.js',
     'resources/assets/admin/plugins/fastclick/fastclick.js',
-    'resources/assets/admin/dist/js/app.min.js',
-    'resources/assets/admin/dist/js/demo.js',
     'resources/assets/admin/plugins/select2/select2.full.min.js',
     'resources/assets/admin/plugins/datepicker/bootstrap-datepicker.js',
     'resources/assets/admin/plugins/slimScroll/jquery.slimscroll.min.js',
     'resources/assets/admin/plugins/iCheck/icheck.min.js',
     'resources/assets/admin/plugins/datatables/jquery.dataTables.min.js',
     'resources/assets/admin/plugins/datatables/dataTables.bootstrap.min.js',
-    'resources/assets/admin/dist/js/scripts.js',
-    'resources/assets/admin/plugins/ckeditor/start.js'
+    'resources/assets/admin/plugins/ckeditor/start.js',
+    'resources/assets/admin/dist/js/app.min.js',
+    'resources/assets/admin/dist/js/demo.js',
+    'resources/assets/admin/dist/js/scripts.js'
 ], 'public/js/admin.js');
 
 mix.js('resources/js/app.js', 'public/js');
@@ -54,6 +55,7 @@ mix.copy('resources/assets/admin/plugins/iCheck/minimal/blue.png', 'public/css')
 // Main-public-mix
 mix.styles([
     'resources/assets/blog/css/bootstrap.min.css',
+    'resources/assets/blog/css/font-awesome.min.css',
     'resources/assets/blog/css/animate.min.css',
     'resources/assets/blog/css/owl.carousel.css',
     'resources/assets/blog/css/owl.theme.css',

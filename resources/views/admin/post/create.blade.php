@@ -21,7 +21,7 @@
                 </div>
                 {{ Form::model($post, ['url' => route('posts.store'), 'files' => true]) }}
                 <div class="box-body">
-                    @include('admin.post.form')
+                    @include('admin.post.inc.form')
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer">

@@ -128,7 +128,7 @@ class Post extends Model
 
     public function toggleStatus($value)
     {
-        if ($value == null) {
+        if ($value === null) {
             return $this->setDraft();
         }
 
@@ -137,19 +137,19 @@ class Post extends Model
 
     public function setFeatured()
     {
-        $this->is_featured = true;
+        $this->is_featured = 1;
         $this->save();
     }
 
     public function setStandart()
     {
-        $this->is_featured = false;
+        $this->is_featured = 0;
         $this->save();
     }
 
     public function toggleFeatured($value)
     {
-        if ($value == null) {
+        if ($value === null) {
             return $this->setStandart();
         }
 
@@ -180,7 +180,9 @@ class Post extends Model
 
     public function hasPrevious()
     {
-        return self::where('id', '<', $this->id)->max('id');
+        $postedArticles = self::where('status', 1);
+
+        return $postedArticles->where('id', '<', $this->id)->max('id');
     }
 
     public function getPrevious()
@@ -192,7 +194,9 @@ class Post extends Model
 
     public function hasNext()
     {
-        return self::where('id', '>', $this->id)->min('id');
+        $postedArticles = self::where('status', 1);
+
+        return $postedArticles->where('id', '>', $this->id)->min('id');
     }
 
     public function getNext()
@@ -204,6 +208,6 @@ class Post extends Model
 
     public function related()
     {
-        return self::all()->except($this->id);
+        return self::all()->where('status', 1)->except($this->id);
     }
 }

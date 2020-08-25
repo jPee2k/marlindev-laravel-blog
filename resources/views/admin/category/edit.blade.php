@@ -20,7 +20,7 @@
                 </div>
                 @include('admin.errors')
                 {{ Form::model($category, ['method' => 'PATCH', 'url' => route('categories.update', $category)]) }}
-                @include('admin.category.form')
+                @include('admin.category.inc.form')
                 <div class="box-footer">
                     <a href="{{ route('categories.index') }}" class="btn btn-default">Назад</a>
                     {{ Form::submit('Изменить', ['class' => 'btn btn-success pull-right', 'data-disable-with' => 'Сохраняем']) }}

@@ -20,7 +20,7 @@
                 </div>
                 @include('admin.errors')
                 {{ Form::model($tag, ['method' => 'PATCH', 'url' => route('tags.update', $tag)]) }}
-                @include('admin.tag.form')
+                @include('admin.tag.inc.form')
                 <div class="box-footer">
                     <a href="{{ route('tags.index') }}" class="btn btn-default">Назад</a>
                     {{ Form::submit('Изменить', ['class' => 'btn btn-success pull-right', 'data-disable-with' => 'Сохраняем']) }}

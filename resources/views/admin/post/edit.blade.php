@@ -21,7 +21,7 @@
                 </div>
                 {{ Form::model($post, ['method' => 'PATCH', 'url' => route('posts.update', $post), 'files' => true]) }}
                 <div class="box-body">
-                    @include('admin.post.form')
+                    @include('admin.post.inc.form')
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer">
