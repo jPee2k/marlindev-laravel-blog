@@ -10,10 +10,10 @@
                     <div class="leave-comment mr0">
                         <!--leave comment-->
 
-                        <h3 class="text-uppercase">Register</h3>
-                        <br>
-
                         @include('admin.errors')
+
+                        <h3 class="text">Регистрация</h3>
+                        <br>
 
                         {{ Form::model($user, [
                                 'method' => 'POST',
@@ -25,7 +25,7 @@
                             <div class="col-md-12">
                                 {{ Form::text('name', $user->name, [
                                         'class' => 'form-control',
-                                        'placeholder' => 'Name',
+                                        'placeholder' => 'Ваше имя',
                                     ]) }}
                             </div>
                         </div>
@@ -33,7 +33,7 @@
                             <div class="col-md-12">
                                 {{ Form::email('email', $user->email, [
                                         'class' => 'form-control',
-                                        'placeholder' => 'Email',
+                                        'placeholder' => 'Адрес эл. почты',
                                     ]) }}
                             </div>
                         </div>
@@ -41,7 +41,7 @@
                             <div class="col-md-12">
                                 {{ Form::password('password', [
                                         'class' => 'form-control',
-                                        'placeholder' => 'Password',
+                                        'placeholder' => 'Пароль',
                                     ]) }}
                             </div>
                         </div>
@@ -49,13 +49,14 @@
                             <div class="col-md-12">
                                 {{ Form::password('password_confirmation', [
                                         'class' => 'form-control',
-                                        'placeholder' => 'Password confirmation',
+                                        'placeholder' => 'Подтвердите пароль',
                                     ]) }}
                             </div>
                         </div>
-                        {{ Form::submit('Подтвердить', [
+                        {{ Form::button('Подтвердить', [
+                                'type' => 'submit',
                                 'class' => 'btn send-btn',
-                                'data-disable-with' => 'Сохраняем',
+                                'data-disable-with' => 'Регистрация',
                             ]) }}
                         {{ Form::close() }}
                     </div>

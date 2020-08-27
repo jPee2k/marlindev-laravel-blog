@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
 use App\User;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUser;
+use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
@@ -47,25 +49,53 @@ class AuthController extends Controller
         $user->hashPassword($request->get('password'));
         $user->save();
 
-        $request->session()->flash('success', 'Регистрация пользователя прошла успешно');
+        $request->session()->flash('success', 'Регистрация прошла успешно. Пожалуйста, авторизируйтесь на сайте');
+
+        return redirect()->route('user.login-page');
+    }
+
+    public function loginForm()
+    {
+        return view('page.user.login');
+    }
+
+    public function login(Request $request)
+    {
+        $this->validate($request, [
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+
+        $auth = Auth::attempt([
+            'email' => $request->get('email'),
+            'password' => $request->get('password')
+        ]);
+
+        if ($auth) {
+            return redirect()->route('main.index');
+        }
+
+        return redirect()->back()->with('status', 'Неправильный логин или пароль');
+    }
+
+    public function logout()
+    {
+        Auth::logout();
 
         return redirect()->route('user.login');
     }
 
-
-    public function login()
-    {
-        return view('page.user.login');
-    }
     /**
      * Display the specified resource.
      *
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(Auth $auth)
     {
-        //
+        $user = $auth::user();
+
+        return view('page.user.profile', compact('user'));
     }
 
     /**

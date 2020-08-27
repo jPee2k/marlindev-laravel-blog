@@ -10,30 +10,45 @@
                     <div class="leave-comment mr0">
                         <!--leave comment-->
 
-                        <h3 class="text-uppercase">Login</h3>
-                        <br>
-
                         @include('admin.success')
 
-                        <form class="form-horizontal contact-form" role="form" method="post" action="">
-                            <div class="form-group">
-                                <div class="col-md-12">
-                                    <input type="text" class="form-control" id="email" name="email" placeholder="Email">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-md-12">
-                                    <input type="text" class="form-control" id="password" name="password"
-                                        placeholder="password">
-                                </div>
-                            </div>
-                            <button type="submit" name="submit" class="btn send-btn">Login</button>
+                        <h3 class="text">Вход</h3>
+                        <br>
 
-                        </form>
+                        {{ Form::open([
+                                'method' => 'POST',
+                                'url' => route('user.login'),
+                                'class' => 'form-horizontal contact-form',
+                                'role' => 'form'
+                            ]) }}
+
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                {{ Form::email('email', null, [
+                                        'class' => 'form-control',
+                                        'placeholder' => 'Адрес эл. почты',
+                                    ]) }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                {{ Form::password('password', [
+                                        'class' => 'form-control',
+                                        'placeholder' => 'Пароль',
+                                    ]) }}
+                            </div>
+                        </div>
+                        {{ Form::button('Войти', [
+                                'type' => 'submit',
+                                'class' => 'btn send-btn',
+                                'data-disable-with' => 'Входим',
+                            ]) }}
+
+                        {{ Form::close() }}
                     </div>
                     <!--end leave comment-->
                 </div>
-                
+
                 @include('page.inc.sidebar')
 
             </div>

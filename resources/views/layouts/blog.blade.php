@@ -46,15 +46,21 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                     <ul class="nav navbar-nav text-uppercase">
-                        <li><a href="{{ route('main.index') }}">Homepage</a></li>
-                        <li><a href="{{ route('pages.about') }}" target="_blank">ABOUT ME </a></li>
-                        <li><a href="contact.html">CONTACT</a></li>
+                        <li><a href="{{ route('main.index') }}">На главную</a></li>
+                        <li><a href="{{ route('pages.about') }}" target="_blank">Обо мне</a></li>
+                        <li><a href="#">Контакты</a></li>
                     </ul>
 
                     <ul class="nav navbar-nav text-uppercase pull-right">
-                        <li><a href="{{ route('user.create') }}">Register</a></li>
-                        <li><a href="{{ route('user.login') }}">Login</a></li>
-                        <li><a href="contact.html">My profile</a></li>
+                        @if (Auth::check())
+                            <li><a href="{{ route('user.show') }}">Мой Профиль</a></li>
+                            <li><a href="{{ route('user.logout') }}">Выход</a></li>
+                        @else
+                            <li><a href="{{ route('user.create') }}">Регистрация</a></li>
+                            <li><a href="{{ route('user.login-page') }}">Вход</a></li>
+                        @endif
+
+
                     </ul>
 
                 </div>
@@ -75,6 +81,8 @@
 
     <!-- ======================================================= -->
     <!--main content start-->
+    @include('layouts.inc.status')
+
     @yield('content')
     <!-- end main content-->
     <!-- ======================================================= -->

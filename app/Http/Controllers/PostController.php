@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use App\Category;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -15,6 +16,8 @@ class PostController extends Controller
      */
     public function index()
     {
+        Auth::check();
+
         $posts = Post::where('status', 1)->paginate(5);
 
         $popularPosts = Post::where('status', 1)->orderBy('views', 'desc')->take(3)->get();
