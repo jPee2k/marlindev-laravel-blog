@@ -27,7 +27,10 @@
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer">
-                    {{ Form::submit('Добавить', ['class' => 'btn btn-success pull-right', 'data-disable-with' => 'Сохраняем']) }}
+                    {{ Form::submit('Добавить', [
+                            'class' => 'btn btn-success pull-right',
+                            'data-disable-with' => 'Сохраняем',
+                        ]) }}
                 </div>
                 {{ Form::close() }}
                 <!-- /.box-footer-->

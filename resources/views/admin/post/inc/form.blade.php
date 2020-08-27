@@ -40,7 +40,11 @@
     <!-- checkbox -->
     <div class="form-group">
         <label>
-            {{ Form::checkbox('is_featured', $post->is_featured, false, ['class' => 'minimal']) }}
+            @if ($post->is_featured === 1)
+                {{ Form::checkbox('is_featured', null, false, ['checked', 'class' => 'minimal']) }}
+            @else
+                {{ Form::checkbox('is_featured', null, false, ['class' => 'minimal']) }}
+            @endif
             <b>Рекомендовать</b>
         </label>
     </div>
@@ -48,7 +52,11 @@
     <!-- checkbox -->
     <div class="form-group">
         <label>
-            {{ Form::checkbox('status', $post->status, false, ['class' => 'minimal']) }}
+            @if ($post->status === 1)
+                {{ Form::checkbox('status', null, false, ['checked', 'class' => 'minimal']) }}
+            @else
+                {{ Form::checkbox('status', null, false, ['class' => 'minimal']) }}
+            @endif
             <b id="status">Опубликовать</b>
         </label>
     </div>

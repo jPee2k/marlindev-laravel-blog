@@ -21,7 +21,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email',
     ];
 
     /**
@@ -50,6 +50,12 @@ class User extends Authenticatable
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+
+    public function hashPassword($password)
+    {
+        $this->password = password_hash($password, PASSWORD_DEFAULT);
+        $this->save();
     }
 
     public function uploadAvatar($image)

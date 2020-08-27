@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Main routes
 Route::get('/', 'PostController@index')
     ->name('main.index');
 
@@ -28,6 +29,19 @@ Route::get('categories/{slug}', 'PageController@category')
 Route::get('/about-me', 'PageController@about')
     ->name('pages.about');
 
+
+// Registration
+Route::group(['prefix' => 'users', 'namespace' => 'Auth'], function () {
+    Route::get('/register', 'AuthController@create')
+        ->name('user.create');
+    Route::post('/store', 'AuthController@store')
+        ->name('user.store');
+    Route::get('/login', 'AuthController@login')
+        ->name('user.login');
+});
+
+
+// Administration
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('/', 'DashboardController@index')
         ->name('dashboard.index');

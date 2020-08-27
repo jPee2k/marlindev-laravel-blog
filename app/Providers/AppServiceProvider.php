@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->composer('page.post.inc.sidebar', function ($view) {
+        view()->composer('page.inc.sidebar', function ($view) {
             $view->with('popularPosts', Post::where('status', 1)
                 ->orderBy('views', 'desc')->take(3)->get());
             $view->with('featuredPosts', Post::where('status', 1)

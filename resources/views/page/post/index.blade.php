@@ -51,7 +51,7 @@
                     {{ $posts->links() }}
                 </div>
 
-                @include('page.post.inc.sidebar')
+                @include('page.inc.sidebar')
             </div>
         </div>
     </div>

@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\User;
-use Illuminate\Http\Request;
 use App\Http\Requests\StoreUser;
+use Illuminate\Http\Request;
 
-class UserController extends Controller
+class AuthController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::paginate();
-
-        return view('admin.user.index', compact('users'));
+        //
     }
 
     /**
@@ -30,7 +28,7 @@ class UserController extends Controller
     {
         $user = new User();
 
-        return view('admin.user.create', compact('user'));
+        return view('page.user.register', compact('user'));
     }
 
     /**
@@ -42,20 +40,23 @@ class UserController extends Controller
     public function store(StoreUser $request)
     {
         $data = $request->validated();
- 
+
         $user = new User();
-        
+
         $user->fill($data);
-        // $user->password = password_hash($data['password'], PASSWORD_DEFAULT);
         $user->hashPassword($request->get('password'));
-        $user->uploadAvatar($request->file('avatar'));
         $user->save();
 
         $request->session()->flash('success', 'Регистрация пользователя прошла успешно');
 
-        return redirect()->route('users.index');
+        return redirect()->route('user.login');
     }
 
+
+    public function login()
+    {
+        return view('page.user.login');
+    }
     /**
      * Display the specified resource.
      *
@@ -75,7 +76,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('admin.user.edit', compact('user'));
+        //
     }
 
     /**
@@ -85,18 +86,9 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreUser $request, User $user)
+    public function update(Request $request, User $user)
     {
-        $data = $request->validated();
-
-        $user->fill($data);
-        $user->password = password_hash($data['password'], PASSWORD_DEFAULT);
-        $user->uploadAvatar($request->file('avatar'));
-        $user->save();
-
-        $request->session()->flash('success', 'Пользовательские данные успешно обновлены');
-
-        return redirect()->route('users.index');
+        //
     }
 
     /**
@@ -105,11 +97,8 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, User $user)
+    public function destroy(User $user)
     {
-        $user->remove();
-        $request->session()->flash('success', 'Пользователь успешно удален');
-        
-        return redirect()->route('users.index');
+        //
     }
 }

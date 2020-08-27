@@ -45,10 +45,10 @@
                         </div>
                     </article>
                     
-                    @include('page.post.inc.comment')
+                    @include('page.inc.comment')
                 </div>
 
-                @include('page.post.inc.sidebar')
+                @include('page.inc.sidebar')
             </div>
         </div>
     </div>
