@@ -16,9 +16,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        Auth::check();
-
-        $posts = Post::where('status', 1)->paginate(5);
+        $posts = Post::where('status', 1)->paginate(3);
 
         $popularPosts = Post::where('status', 1)->orderBy('views', 'desc')->take(3)->get();
         $featuredPosts = Post::where('status', 1)->where('is_featured', 1)->orderBy('views')->take(3)->get();

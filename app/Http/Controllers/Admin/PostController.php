@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Post;
 use App\Tag;
 use App\Category;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreBlogPost;
 
@@ -90,7 +91,7 @@ class PostController extends Controller
         $data = $request->validated();
 
         $post->fill($data);
-        $post->user_id = 1; // todo after autorize
+        $post->user_id = Auth::user()->id; // todo after autorize
         $post->uploadImage($request->file('image'));
         $post->setCategory($request->get('category_id'));
         $post->setTags($request->get('tags'));

@@ -46,8 +46,10 @@ Route::group(
     function () {
         Route::get('/logout', 'AuthController@logout')
             ->name('user.logout');
-        Route::get('/profile', 'AuthController@show')
-            ->name('user.show');
+        Route::get('/profile', 'AuthController@edit')
+            ->name('user.edit');
+        Route::patch('/update', 'AuthController@update')
+            ->name('user.update');
     }
 );
 

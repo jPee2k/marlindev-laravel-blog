@@ -32,7 +32,13 @@ class StoreUser extends FormRequest
                 'email',
                 Rule::unique('users', 'email')->ignore($this->user)
             ],
-            'password' => 'min:6|max:255|required|confirmed',
+            'password' => [
+                'min:6',
+                'max:255',
+                'required',
+                'confirmed',
+                'regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9]).*$/'
+            ],
             'avatar' => 'nullable|image|max:256'
         ];
     }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUser;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
@@ -62,7 +63,10 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $this->validate($request, [
-            'email' => 'required|email',
+            'email' => [
+                'required',
+                'email'
+            ],
             'password' => 'required'
         ]);
 
@@ -75,7 +79,7 @@ class AuthController extends Controller
             return redirect()->route('main.index');
         }
 
-        return redirect()->back()->with('status', 'Неправильный логин или пароль');
+        return redirect()->back()->with('alert', 'Неправильный логин или пароль');
     }
 
     public function logout()
@@ -91,11 +95,9 @@ class AuthController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(Auth $auth)
+    public function show()
     {
-        $user = $auth::user();
-
-        return view('page.user.profile', compact('user'));
+        //
     }
 
     /**
@@ -106,7 +108,9 @@ class AuthController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        $user = Auth::user();
+
+        return view('page.user.profile', compact('user'));
     }
 
     /**
@@ -116,9 +120,34 @@ class AuthController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request)
     {
-        //
+        $userID = Auth::user()->id;
+        $user = User::findOrFail($userID);
+
+        $data = $this->validate($request, [
+            'name' => 'required|min:3|max:255|alpha',
+            'email' => [
+                'required',
+                'email',
+                Rule::unique('users', 'email')->ignore($userID)
+            ],
+            'password' => [
+                'min:6',
+                'max:255',
+                'confirmed',
+                'nullable',
+                'regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9]).*$/'
+            ],
+            'avatar' => 'nullable|image|max:256'
+        ]);
+
+        $user->fill($data);
+        $user->hashPassword($request->get('password'));
+        $user->uploadAvatar($request->file('avatar'));
+        $user->save();
+
+        return redirect()->back()->with('status', 'Профиль успешно обновлен');
     }
 
     /**

@@ -1,14 +1,16 @@
 <div class="col-md-4" data-sticky_column>
     <div class="primary-sidebar">
+        @if (!Auth::user())
         <aside class="widget news-letter">
-            <h3 class="widget-title text-uppercase text-center">Get Newsletter</h3>
+            <h3 class="widget-title text-uppercase text-center">Быть в курсе событий</h3>
             <form action="#">
-                <input type="email" placeholder="Your email address">
-                <input type="submit" value="Subscribe Now" class="text-uppercase text-center btn btn-subscribe">
+                <input type="email" placeholder="Ваш адрес эл. почты">
+                <input type="submit" value="Подписаться" class="text-uppercase text-center btn btn-subscribe">
             </form>
         </aside>
+        @endif
         <aside class="widget">
-            <h3 class="widget-title text-uppercase text-center">Popular Posts</h3>
+            <h3 class="widget-title text-uppercase text-center">Популярные посты</h3>
 
             @foreach ($popularPosts as $post)
                 <div class="popular-post">
@@ -26,7 +28,7 @@
 
         </aside>
         <aside class="widget">
-            <h3 class="widget-title text-uppercase text-center">Featured Posts</h3>
+            <h3 class="widget-title text-uppercase text-center">Рекомендуемые</h3>
             <div id="widget-feature" class="owl-carousel">
 
                 @foreach ($featuredPosts as $post)
@@ -35,7 +37,6 @@
                             <img src="{{ $post->getImage() }}" alt="">
                             <a href="{{ route('post.show', $post->slug) }}" class="overlay-text text-center">
                                 <h5 class="text-uppercase">{{ $post->title }}</h5>
-                                {!! Str::limit($post->description, 30) !!}
                             </a>
                         </div>
                     </div>
@@ -44,7 +45,7 @@
             </div>
         </aside>
         <aside class="widget pos-padding">
-            <h3 class="widget-title text-uppercase text-center">Recent Posts</h3>
+            <h3 class="widget-title text-uppercase text-center">Актуальное</h3>
 
             @foreach ($recentPosts as $post)
                 <div class="thumb-latest-posts">
@@ -67,7 +68,7 @@
 
         </aside>
         <aside class="widget border pos-padding">
-            <h3 class="widget-title text-uppercase text-center">Categories</h3>
+            <h3 class="widget-title text-uppercase text-center">Категории</h3>
             <ul>
 
                 @foreach ($categories as $category)

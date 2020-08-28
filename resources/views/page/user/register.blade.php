@@ -55,7 +55,7 @@
                         </div>
                         {{ Form::button('Подтвердить', [
                                 'type' => 'submit',
-                                'class' => 'btn send-btn',
+                                'class' => 'btn send-btn col-md-offset-10',
                                 'data-disable-with' => 'Регистрация',
                             ]) }}
                         {{ Form::close() }}

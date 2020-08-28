@@ -90,7 +90,7 @@ class UserController extends Controller
         $data = $request->validated();
 
         $user->fill($data);
-        $user->password = password_hash($data['password'], PASSWORD_DEFAULT);
+        $user->hashPassword($request->get('password'));
         $user->uploadAvatar($request->file('avatar'));
         $user->save();
 

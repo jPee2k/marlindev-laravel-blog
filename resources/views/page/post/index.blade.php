@@ -14,20 +14,23 @@
                                     <img src="{{ $post->getImage() }}" alt="">
                                 </a>
                                 <a href="{{ route('post.show', $post->slug) }}" class="post-thumb-overlay text-center">
-                                    <div class="text-uppercase text-center">View Post</div>
+                                    <div class="text-uppercase text-center">Подробнее</div>
                                 </a>
                             </div>
                             <div class="post-content">
                                 <header class="entry-header text-center text-uppercase">
                                     @include('page.post.category')
-                                    <h1 class="entry-title"><a
-                                            href="{{ route('post.show', $post->slug) }}">{{ $post->title }}</a></h1>
+                                    <h1 class="entry-title">
+                                        <a href="{{ route('post.show', $post->slug) }}">
+                                            {{ $post->title }}
+                                        </a>
+                                    </h1>
                                 </header>
                                 <div class="entry-content">
                                     {!! $post->description !!}
                                     <div class="btn-continue-reading text-center text-uppercase">
                                         <a href="{{ route('post.show', $post->slug) }}" class="more-link">
-                                            Continue Reading
+                                            Подробнее
                                         </a>
                                     </div>
                                 </div>

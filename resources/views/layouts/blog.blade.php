@@ -53,7 +53,7 @@
 
                     <ul class="nav navbar-nav text-uppercase pull-right">
                         @if (Auth::check())
-                            <li><a href="{{ route('user.show') }}">Мой Профиль</a></li>
+                            <li><a href="{{ route('user.edit') }}">Мой Профиль</a></li>
                             <li><a href="{{ route('user.logout') }}">Выход</a></li>
                         @else
                             <li><a href="{{ route('user.create') }}">Регистрация</a></li>
@@ -81,9 +81,7 @@
 
     <!-- ======================================================= -->
     <!--main content start-->
-    @include('layouts.inc.status')
-
-    @yield('content')
+        @yield('content')
     <!-- end main content-->
     <!-- ======================================================= -->
 

@@ -54,13 +54,15 @@ class User extends Authenticatable
 
     public function hashPassword($password)
     {
-        $this->password = password_hash($password, PASSWORD_DEFAULT);
-        $this->save();
+        if ($password !== null) {
+            $this->password = password_hash($password, PASSWORD_DEFAULT);
+            $this->save();
+        }
     }
 
     public function uploadAvatar($image)
     {
-        if ($image == null) {
+        if ($image === null) {
             return;
         }
 
@@ -75,7 +77,7 @@ class User extends Authenticatable
 
     public function getImage()
     {
-        if ($this->avatar == null) {
+        if ($this->avatar === null) {
             return '/img/no-user-image.png';
         }
 
@@ -90,7 +92,7 @@ class User extends Authenticatable
 
     public function removeAvatar()
     {
-        if ($this->avatar != null){
+        if ($this->avatar !== null){
             Storage::delete('uploads/avatars/' . $this->avatar);
         }
     }
@@ -109,7 +111,7 @@ class User extends Authenticatable
 
     public function toggleAccess($value = null)
     {
-        if ($value == null) {
+        if ($value === null) {
             return $this->setUserAccess();
         }
 
@@ -130,7 +132,7 @@ class User extends Authenticatable
 
     public function toggleStatus($value = null)
     {
-        if ($value == null) {
+        if ($value === null) {
             return $this->setUnban();
         }
 
