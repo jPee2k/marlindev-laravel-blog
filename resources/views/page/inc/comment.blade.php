@@ -63,58 +63,53 @@
     </div>
 </div>
 <!--related post carousel-->
-<div class="bottom-comment">
-    <!--bottom comment-->
-    <h4>3 comments</h4>
+@if (!$post->comments->isEmpty())
+    @foreach ($post->getComments() as $comment)
+        <div class="bottom-comment">
+            <!--bottom comment-->
+            <div class="comment-img">
+                <img class="img-circle" src="{{ $comment->author->getImage() }}" alt="" width="75">
+            </div>
 
-    <div class="comment-img">
-        <img class="img-circle" src="/img/blog/comment-img.jpg" alt="">
-    </div>
+            <div class="comment-text">
+                <h5>{{ $comment->author->name }}</h5>
 
-    <div class="comment-text">
-        <a href="#" class="replay btn pull-right"> Replay</a>
-        <h5>Rubel Miah</h5>
+                <p class="comment-date">
+                    {{ $comment->created_at->diffForHumans() }}
+                </p>
 
-        <p class="comment-date">
-            December, 02, 2015 at 5:57 PM
-        </p>
-
-
-        <p class="para">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-            diam nonumy
-            eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-            voluptua. At vero eos et cusam et justo duo dolores et ea rebum.</p>
-    </div>
-</div>
+                <p class="para">
+                    {{ $comment->text }}
+                </p>
+            </div>
+        </div>
+    @endforeach
+@endif
 <!-- end bottom comment-->
 
+@if (Auth::check())
+    <div class="leave-comment">
+        <!--leave comment-->
+        <h4>Оставьте ответ</h4>
 
-<div class="leave-comment">
-    <!--leave comment-->
-    <h4>Leave a reply</h4>
-
-
-    <form class="form-horizontal contact-form" role="form" method="post" action="#">
-        <div class="form-group">
-            <div class="col-md-6">
-                <input type="text" class="form-control" id="name" name="name" placeholder="Name">
-            </div>
-            <div class="col-md-6">
-                <input type="email" class="form-control" id="email" name="email" placeholder="Email">
-            </div>
-        </div>
-
+        {{ Form::open([
+            'method' => 'POST',
+            'url' => route('user.comment'),
+            'class' => 'form-horizontal contact-form',
+            'role' => 'form',
+        ]) }}
+        {{ Form::hidden('post_id', htmlspecialchars($post->id)) }}
         <div class="form-group">
             <div class="col-md-12">
-                <input type="text" class="form-control" id="subject" name="subject" placeholder="Website url">
+                {{ Form::text('message', htmlspecialchars(old('text')), [
+                    'class' => 'form-control',
+                    'rows' => 6,
+                    'placeholder' => 'Напишите свой комментарий',
+                ]) }}
             </div>
         </div>
-        <div class="form-group">
-            <div class="col-md-12">
-                <textarea class="form-control" rows="6" name="message" placeholder="Write Massage"></textarea>
-            </div>
-        </div>
-        <a href="#" class="btn send-btn">Post Comment</a>
-    </form>
-</div>
+        {{ Form::button('Отправить', ['type' => 'submit', 'class' => 'btn send-btn']) }}
+        {{ Form::close() }}
+    </div>
+@endif
 <!--end leave comment-->

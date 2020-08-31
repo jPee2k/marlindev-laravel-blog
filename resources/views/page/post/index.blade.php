@@ -36,7 +36,7 @@
                                 </div>
                                 <div class="social-share">
                                     <span class="social-share-title pull-left text-capitalize">
-                                        By <a href="#">Rubel</a> on
+                                        By <a href="#">{{ $post->author->name ?? 'Administration'}}</a> on
                                         {{ PostHelper::getDate($post) }}
                                     </span>
                                     <ul class="text-center pull-right">

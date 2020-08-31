@@ -52,6 +52,11 @@ class Post extends Model
         );
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
     // Методы реализующие бизнес-логику
     public function remove()
     {
@@ -209,5 +214,10 @@ class Post extends Model
     public function related()
     {
         return self::all()->where('status', 1)->except($this->id);
+    }
+
+    public function getComments()
+    {
+        return $this->comments()->where('status', 1)->get();
     }
 }

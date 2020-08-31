@@ -208,7 +208,7 @@
                 <!-- /.search form -->
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu">
-                    <li class="header">MAIN NAVIGATION</li>
+                    <li class="header">МЕНЮ НАВИГАЦИИ</li>
                     <li class="treeview">
                         <a href="{{ route('main.index') }}">
                             <i class="fa fa-dashboard"></i> <span>На главную</span>
@@ -220,10 +220,10 @@
                             <span>Категории</span></a></li>
                     <li><a href="{{ route('tags.index') }}"><i class="fa fa-tags"></i> <span>Теги</span></a></li>
                     <li>
-                        <a href="#">
+                        <a href="{{ route('comments.index') }}">
                             <i class="fa fa-commenting"></i> <span>Комментарии</span>
                             <span class="pull-right-container">
-                                <small class="label pull-right bg-green">5</small>
+                                <small class="label pull-right bg-green">{{ $newCommentsCount }}</small>
                             </span>
                         </a>
                     </li>

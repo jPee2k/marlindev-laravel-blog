@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Post;
+use App\Comment;
 use App\Category;
 use Illuminate\Support\ServiceProvider;
 
@@ -33,6 +34,10 @@ class AppServiceProvider extends ServiceProvider
             $view->with('recentPosts', Post::where('status', 1)
                 ->orderBy('date', 'desc')->take(4)->get());
             $view->with('categories', Category::all());
+        });
+
+        view()->composer('layouts.admin', function ($view) {
+            $view->with('newCommentsCount', Comment::where('status', 0)->count());
         });
     }
 }

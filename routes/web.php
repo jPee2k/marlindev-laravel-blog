@@ -25,6 +25,11 @@ Route::get('categories/{slug}', 'PageController@category')
 Route::get('/about-me', 'PageController@about')
     ->name('pages.about');
 
+Route::group(['middleware' => 'auth'], function () {
+    Route::post('/comment', 'CommentController@store')
+        ->name('user.comment');
+});
+
 
 // Registration
 Route::group(
@@ -64,5 +69,11 @@ Route::group(
         Route::resource('/tags', 'TagController');
         Route::resource('/users', 'UserController');
         Route::resource('/posts', 'PostController');
+        Route::get('/comments', 'CommentController@index')
+            ->name('comments.index');
+        Route::post('/comments/status/{id}', 'CommentController@status')
+            ->name('comments.status');
+        Route::delete('/comments/{id}/destroy', 'CommentController@destroy')
+            ->name('comments.destroy');
     }
 );
