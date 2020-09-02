@@ -44,17 +44,9 @@
                                     <td>{{ $tag->title }}</td>
                                     <td>
                                         <a href="{{ route('tags.edit', $tag) }}" class="fa fa-pencil"></a>
-                                        {{ Form::open(['method' => 'delete', 'route' => ['tags.destroy', $tag]]) }}
-                                        <button data-confirm="Вы уверены?" type="submit" class="delete">
-                                            <i class='fa fa-remove'></i>
-                                        </button>
-                                        {{ Form::close() }}
-                                        <!-- <a href="{{ route('tags.destroy', $tag) }}"
-                                          data-confirm="Вы уверены?"
-                                          data-method="delete"
-                                          rel="nofollow"
-                                          class="fa fa-remove">
-                                        </a> -->
+                                        <a href="{{ route('tags.destroy', $tag) }}" data-confirm="Вы уверены?"
+                                            data-method="delete" rel="nofollow" class="fa fa-remove">
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach

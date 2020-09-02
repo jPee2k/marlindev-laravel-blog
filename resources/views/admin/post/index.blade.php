@@ -52,11 +52,11 @@
                                     </td>
                                     <td>
                                         <a href="{{ route('posts.edit', $post) }}" class="fa fa-pencil"></a>
-                                        {{ Form::open(['method' => 'delete', 'route' => ['posts.destroy', $post]]) }}
-                                        <button data-confirm="Вы уверены?" type="submit" class="delete">
-                                            <i class='fa fa-remove'></i>
-                                        </button>
-                                        {{ Form::close() }}
+                                        <a href="{{ route('posts.destroy', $post) }}"
+                                            data-confirm="Вы уверены?"
+                                            data-method="delete" class="fa fa-remove"
+                                            rel="nofollow">
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach

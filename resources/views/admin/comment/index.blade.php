@@ -59,11 +59,11 @@
                                             </button>
                                         @endif
                                         {{ Form::close() }}
-                                        {{ Form::open(['method' => 'delete', 'url' => route('comments.destroy', $comment->id)]) }}
-                                        <button data-confirm="Вы уверены?" type="submit" class="delete" rel="nofollow">
-                                            <i class='fa fa-remove'></i>
-                                        </button>
-                                        {{ Form::close() }}
+                                        <a href="{{ route('comments.destroy', $comment->id) }}"
+                                            data-confirm="Вы уверены?"
+                                            data-method="delete" class="fa fa-remove"
+                                            rel="nofollow">
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach

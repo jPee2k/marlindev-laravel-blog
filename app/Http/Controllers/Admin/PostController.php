@@ -110,9 +110,13 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy(Request $request, Post $post)
     {
-        $post->remove();
+        if ($post) {
+            $post->remove();
+        }
+        
+        $request->session()->flash('success', 'Публикация успешно удалена');
 
         return redirect()->route('posts.index');
     }

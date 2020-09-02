@@ -43,7 +43,8 @@ mix.scripts([
     'resources/assets/admin/dist/js/scripts.js'
 ], 'public/js/admin.js');
 
-mix.js('resources/js/app.js', 'public/js');
+mix.js('resources/js/app.js', 'public/js')
+    .sass('resources/sass/app.scss', 'public/css');
 
 mix.copy('resources/assets/admin/bootstrap/css/bootstrap.min.css.map', 'public/css');
 mix.copy('resources/assets/admin/bootstrap/fonts', 'public/fonts');

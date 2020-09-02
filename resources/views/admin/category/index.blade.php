@@ -44,16 +44,11 @@
                                     <td>{{ $category->title }}</td>
                                     <td>
                                         <a href="{{ route('categories.edit', $category) }}" class="fa fa-pencil"></a>
-                                        <!-- <a href="{{ route('categories.destroy', $category) }}"
+                                        <a href="{{ route('categories.destroy', $category) }}"
                                             data-confirm="Вы уверены?"
                                             data-method="delete" class="fa fa-remove"
                                             rel="nofollow">
-                                          </a> -->
-                                        {{ Form::open(['method' => 'delete', 'route' => ['categories.destroy', $category]]) }}
-                                        <button data-confirm="Вы уверены?" type="submit" class="delete">
-                                            <i class='fa fa-remove'></i>
-                                        </button>
-                                        {{ Form::close() }}
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach
