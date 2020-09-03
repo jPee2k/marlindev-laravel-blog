@@ -68,7 +68,7 @@ class Post extends Model
     // Методы для работы с картинками
     public function uploadImage($image)
     {
-        if ($image == null) {
+        if ($image === null) {
             return;
         }
 
@@ -82,14 +82,14 @@ class Post extends Model
 
     public function removeImage()
     {
-        if ($this->image != null) {
+        if ($this->image !== null) {
             Storage::delete('uploads/images/' . $this->image);
         }
     }
 
     public function getImage()
     {
-        if ($this->image == null) {
+        if ($this->image === null) {
             return '/img/no-image.png';
         }
 
@@ -99,7 +99,7 @@ class Post extends Model
     // Доп параметры поста
     public function setCategory($id)
     {
-        if ($id == null) {
+        if ($id === null) {
             return;
         }
 
@@ -112,7 +112,7 @@ class Post extends Model
 
     public function setTags($ids)
     {
-        if ($ids == null) {
+        if ($ids === null) {
             return;
         }
 

@@ -32,7 +32,8 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="{{ route('main.index') }}"><img src="/img/blog/logo.png" alt=""></a>
+                    <a class="navbar-brand" href="{{ route('main.index') }}"><img src="/img/blog/logo.svg" height="30px"
+                            alt=""></a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -73,7 +74,12 @@
 
     <!-- ======================================================= -->
     <!--main content start-->
-        @yield('content')
+    <div class="container">
+            @include('layouts.inc.status')
+            @include('admin.errors')
+    </div>
+
+    @yield('content')
     <!-- end main content-->
     <!-- ======================================================= -->
 
@@ -136,9 +142,10 @@
                     </aside>
                 </div>
 
+                <!-- Carousel -->
                 <div class="col-md-4">
                     <aside class="footer-widget">
-                        <h3 class="widget-title text-uppercase">Testimonials</h3>
+                        <h3 class="widget-title text-uppercase">Отзывы</h3>
 
                         <div id="myCarousel" class="carousel slide" data-ride="carousel">
                             <!--Indicator-->
@@ -213,30 +220,42 @@
 
                     </aside>
                 </div>
-                <div class="col-md-4">
-                    <aside class="footer-widget">
-                        <h3 class="widget-title text-uppercase">Custom Category Post</h3>
+                <!-- /Carousel -->
 
+                <!-- Custom Post -->
+                @if (isset($randomPost))
+                    <div class="col-md-4">
+                        <aside class="footer-widget">
+                            <h3 class="widget-title text-uppercase">Стоит прочесть</h3>
 
-                        <div class="custom-post">
-                            <div>
-                                <a href="#"><img src="/img/blog/footer-img.png" alt=""></a>
+                            <div class="custom-post">
+                                <div>
+                                    <a href="{{ route('post.show', $randomPost->slug) }}">
+                                        <img src="{{ $randomPost->getImage() }}" alt="">
+                                    </a>
+                                </div>
+                                <div>
+                                    <a href="{{ route('post.show', $randomPost->slug) }}" class="text-uppercase">
+                                        {{ $randomPost->title }}
+                                    </a>
+                                    <span class="p-date">{{ PostHelper::getDate($randomPost) }}</span>
+                                </div>
                             </div>
-                            <div>
-                                <a href="#" class="text-uppercase">Home is peaceful Place</a>
-                                <span class="p-date">February 15, 2016</span>
-                            </div>
-                        </div>
-                    </aside>
-                </div>
+                        </aside>
+                    </div>
+                @endif
+                <!-- /Custom Post -->
+
             </div>
         </div>
         <div class="footer-copy">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="text-center">&copy; 2017 <a href="#">Blog, </a> Designed with <i
-                                class="fa fa-heart"></i> by <a href="#">Marlin</a>
+                        <div class="text-center">
+                            &copy; 2020 <a href="{{ route('main.index') }}">Blog,</a>
+                            Designed with <i class="fa fa-heart"></i> by <a href="{{ route('pages.about') }}"
+                                target="blank_">jPee</a>
                         </div>
                     </div>
                 </div>

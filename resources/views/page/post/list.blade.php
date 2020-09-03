@@ -1,6 +1,11 @@
 @extends('layouts.blog')
 
-@section('title', htmlspecialchars($category->title ?? $tag->title) . ' - Поиск по сайту')
+@if (isset($category->title))
+    @section('title', 'Поиск по категории - ' . htmlspecialchars($category->title))
+@else
+    @section('title', 'Поиск по тегу - ' . htmlspecialchars($tag->title))
+@endif
+
 @section('content')
     <div class="main-content">
         <div class="container">

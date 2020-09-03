@@ -1,6 +1,6 @@
 @extends('layouts.blog')
 
-@section('title', 'Blog | Main page')
+@section('title', 'Главная')
 
 @section('content')
     <div class="main-content">

@@ -39,5 +39,9 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('layouts.admin', function ($view) {
             $view->with('newCommentsCount', Comment::where('status', 0)->count());
         });
+
+        view()->composer('layouts.blog', function ($view) {
+            $view->with('randomPost', Post::where('status', 1)->inRandomOrder()->first());
+        });
     }
 }

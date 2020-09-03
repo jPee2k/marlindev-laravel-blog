@@ -52,7 +52,7 @@ class PostController extends Controller
         $post = new Post();
         $post->fill($data);
 
-        $post->user_id = 1; // todo after autorize
+        $post->user_id = Auth::user()->id; // todo after autorize
         $post->uploadImage($request->file('image'));
         $post->setCategory($request->get('category_id'));
         $post->setTags($request->get('tags'));

@@ -10,8 +10,6 @@
                     <div class="leave-comment mr0">
                         <!--leave comment-->
 
-                        @include('layouts.inc.status')
-                        @include('admin.success')
                         @include('admin.errors')
 
                         <h3 class="text">Вход</h3>

@@ -8,14 +8,14 @@ use Faker\Generator as Faker;
 $factory->define(Post::class, function (Faker $faker) {
     return [
         'title' => $faker->sentence,
-        'description' => $faker->text(100),
-        'content' => $faker->text(1000),
-        'image' => 'photo' . rand(1, 6) . '.jpg',
+        'description' => $faker->text(50),
+        'content' => $faker->text(500),
+        'image' => 'photo' . $faker->unique()->randomDigit . '.jpg',
         'date' => $faker->date('d-m-Y', now()),
         'views' => $faker->numberBetween(0, 3000),
-        'category_id' => $faker->numberBetween(1, 5),
-        'user_id' => 1,
-        'status' => rand(0, 1),
+        'category_id' => $faker->numberBetween(1, 3),
+        'user_id' => 14,
+        'status' => 1,
         'is_featured' => rand(0, 1)
     ];
 });

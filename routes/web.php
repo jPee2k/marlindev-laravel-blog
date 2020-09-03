@@ -30,6 +30,12 @@ Route::group(['middleware' => 'auth'], function () {
         ->name('user.comment');
 });
 
+Route::group(['middleware' => 'guest'], function () {
+    Route::post('/subscribe', 'SubsController@subscribe')
+        ->name('user.subscribe');
+    Route::get('/verify/{token}', 'SubsController@verify')
+        ->name('user.verify');
+});
 
 // Registration
 Route::group(
