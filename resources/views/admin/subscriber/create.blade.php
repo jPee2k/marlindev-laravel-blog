@@ -5,7 +5,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Добавить статью
+                Добавить подписчика
             </h1>
         </section>
 
@@ -15,17 +15,23 @@
             <!-- Default box -->
             <div class="box">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Добавляем статью</h3>
+                    <h3 class="box-title">Добавляем подписчика</h3>
+
                     @include('admin.errors')
                 </div>
-                {{ Form::model($post, ['url' => route('posts.store'), 'files' => true]) }}
+                {{ Form::model($sub, ['method' => 'post', 'url' => route('subscribers.store')]) }}
                 <div class="box-body">
-                    @include('admin.post.inc.form')
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ Form::label('email') }}
+                            {{ Form::email('email', $sub->email, ['class' => 'form-control']) }}
+                        </div>
+                    </div>
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer">
-                    <a href="{{ route('posts.index') }}" class="btn btn-default">Назад</a>
-                    {{ Form::submit('Добавить', ['class' => 'btn btn-success pull-right', 'data-disable-with' => 'Сохраняем']) }}
+                    <a href="{{ route('subscribers.index') }}" class="btn btn-default">Назад</a>
+                    {{ Form::button('Добавить', ['type' => 'submit', 'class' => 'btn btn-success pull-right']) }}
                 </div>
                 {{ Form::close() }}
                 <!-- /.box-footer-->

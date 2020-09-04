@@ -16,9 +16,11 @@ class SubsController extends Controller
         ]);
         
         $subscriber = Subscription::add($request->get('email'));
+        $subscriber->generateToken();
+        
         Mail::to($subscriber)->send(new Subscribe($subscriber));
 
-        return redirect()->back()->with('status', 'Проверьте вашу почту!');
+        return redirect()->back()->with('info', 'Проверьте вашу почту!');
     }
 
     public function verify($token)

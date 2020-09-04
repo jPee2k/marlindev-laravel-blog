@@ -20,36 +20,31 @@
             <!-- Default box -->
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Список пользователей</h3>
+                    <h3 class="box-title">Подписчики</h3>
+
                     @include('admin.success')
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
                     <div class="form-group">
-                        <a href="{{ route('users.create') }}" class="btn btn-success">Добавить</a>
+                        <a href="{{ route('subscribers.create') }}" class="btn btn-success">Добавить</a>
                     </div>
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Имя</th>
-                                <th>E-mail</th>
-                                <th>Аватар</th>
+                                <th>Email</th>
                                 <th>Действия</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($users as $user)
+                            @foreach ($subs as $sub)
                                 <tr>
-                                    <td>{{ $user->id }}</td>
-                                    <td>{{ $user->name }}</td>
-                                    <td>{{ $user->email }}</td>
+                                    <td>{{ $sub->id }}</td>
+                                    <td>{{ $sub->email }}</td>
                                     <td>
-                                        <img src="{{ $user->getImage() }}" alt="" class="img-responsive" width="100">
-                                    </td>
-                                    <td>
-                                        <a href="{{ route('users.edit', $user) }}" class="fa fa-pencil"></a>
-                                        <a href="{{ route('users.destroy', $user) }}" data-confirm="Вы уверены?"
+                                        <!-- <a href="{{ route('subscribers.edit', $sub) }}" class="fa fa-pencil"></a> -->
+                                        <a href="{{ route('subscribers.destroy', $sub) }}" data-confirm="Вы уверены?"
                                             data-method="delete" class="fa fa-remove" rel="nofollow">
                                         </a>
                                     </td>
@@ -60,7 +55,6 @@
                 </div>
                 <!-- /.box-body -->
             </div>
-            <div>{{ $users->links() }}</div>
             <!-- /.box -->
 
         </section>

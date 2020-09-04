@@ -46,6 +46,9 @@
 
                     <ul class="nav navbar-nav text-uppercase pull-right">
                         @if (Auth::check())
+                            @if (Auth::user()->is_admin)
+                                <li><a href="{{ route('dashboard.index') }}">Админка</a></li>
+                            @endif
                             <li><a href="{{ route('user.edit') }}">Мой Профиль</a></li>
                             <li><a href="{{ route('user.logout') }}">Выход</a></li>
                         @else
@@ -75,8 +78,8 @@
     <!-- ======================================================= -->
     <!--main content start-->
     <div class="container">
-            @include('layouts.inc.status')
-            @include('admin.errors')
+        @include('layouts.inc.status')
+        @include('admin.errors')
     </div>
 
     @yield('content')

@@ -9,7 +9,7 @@
     <meta name="csrf-param" content="_token" />
 
     <title>
-        AdminLTE 2 | Blank Page
+        AdminLTE 2
     </title>
 
     <link rel="stylesheet" href="/css/admin.css">
@@ -212,22 +212,45 @@
                             <i class="fa fa-dashboard"></i> <span>На главную</span>
                         </a>
                     </li>
-                    <li><a href="{{ route('posts.index') }}"><i class="fa fa-sticky-note-o"></i> <span>Посты</span></a>
+                    <li>
+                        <a href="{{ route('posts.index') }}"><i class="fa fa-sticky-note-o"></i>
+                            <span>Посты</span>
+                            <i>({{ $postsCount }})</i>
+                        </a>
                     </li>
-                    <li><a href="{{ route('categories.index') }}"><i class="fa fa-list-ul"></i>
-                            <span>Категории</span></a></li>
-                    <li><a href="{{ route('tags.index') }}"><i class="fa fa-tags"></i> <span>Теги</span></a></li>
+                    <li>
+                        <a href="{{ route('categories.index') }}"><i class="fa fa-list-ul"></i>
+                            <span>Категории</span>
+                            <i>({{ $categoriesCount }})</i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('tags.index') }}"><i class="fa fa-tags"></i>
+                            <span>Теги</span>
+                            <i>({{ $tagsCount }})</i>
+                        </a>
+                    </li>
                     <li>
                         <a href="{{ route('comments.index') }}">
                             <i class="fa fa-commenting"></i> <span>Комментарии</span>
+                            <i>({{ $commentsCount }})</i>
                             <span class="pull-right-container">
                                 <small class="label pull-right bg-green">{{ $newCommentsCount }}</small>
                             </span>
                         </a>
                     </li>
-                    <li><a href="{{ route('users.index') }}"><i class="fa fa-users"></i> <span>Пользователи</span></a>
+                    <li>
+                        <a href="{{ route('users.index') }}"><i class="fa fa-users"></i>
+                            <span>Пользователи</span>
+                            <i>({{ $usersCount }})</i>
+                        </a>
                     </li>
-                    <li><a href="#"><i class="fa fa-user-plus"></i> <span>Подписчики</span></a></li>
+                    <li>
+                        <a href="{{ route('subscribers.index') }}"><i class="fa fa-user-plus"></i>
+                            <span>Подписчики</span>
+                            <i>({{ $subsCount }})</i>
+                        </a>
+                    </li>
                 </ul>
             </section>
             <!-- /.sidebar -->

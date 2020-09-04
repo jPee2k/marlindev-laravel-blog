@@ -8,8 +8,6 @@
             <div class="row">
                 <div class="col-md-8">
 
-                    @include('layouts.inc.status')
-
                     <article class="post">
                         <div class="post-thumb">
                             <a href="{{ route('post.show', $post->slug) }}"><img src="{{ $post->getImage() }}" alt=""></a>

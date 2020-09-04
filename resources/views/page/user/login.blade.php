@@ -11,6 +11,7 @@
                         <!--leave comment-->
 
                         @include('admin.errors')
+                        @include('admin.success')
 
                         <h3 class="text">Вход</h3>
                         <br>

@@ -81,5 +81,6 @@ Route::group(
             ->name('comments.status');
         Route::delete('/comments/{id}/destroy', 'CommentController@destroy')
             ->name('comments.destroy');
+        Route::resource('/subscribers', 'SubscribersController');
     }
 );

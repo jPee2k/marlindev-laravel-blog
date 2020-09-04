@@ -6,7 +6,6 @@
         <section class="content-header">
             <h1>
                 Редактировать учетные данные
-                <small>приятные слова..</small>
             </h1>
         </section>
 
