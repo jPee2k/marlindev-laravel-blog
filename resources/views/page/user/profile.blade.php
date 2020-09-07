@@ -10,7 +10,6 @@
                     <div class="leave-comment mr0">
                         <!--leave comment-->
 
-                        @include('layouts.inc.status')
                         @include('admin.errors')
 
                         <h3 class="text-uppercase">Мой профиль</h3>
@@ -32,6 +31,11 @@
                         <div class="form-group">
                             <div class="col-md-12">
                                 {{ Form::email('email', $user->email, ['class' => 'form-control', 'required']) }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                {{ Form::text('slogan', $user->slogan, ['class' => 'form-control', 'placeholder' => 'Ваш слоган']) }}
                             </div>
                         </div>
                         <div class="form-group">

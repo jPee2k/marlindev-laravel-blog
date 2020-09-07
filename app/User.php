@@ -21,7 +21,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email',
+        'name', 'email', 'slogan'
     ];
 
     /**
@@ -50,6 +50,11 @@ class User extends Authenticatable
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+
+    public function slogan()
+    {
+        return $this->hasMany(Slogan::class);
     }
 
     public function hashPassword($password)

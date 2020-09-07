@@ -41,7 +41,7 @@
                     <ul class="nav navbar-nav text-uppercase">
                         <li><a href="{{ route('main.index') }}">На главную</a></li>
                         <li><a href="{{ route('pages.about') }}" target="_blank">Обо мне</a></li>
-                        <li><a href="#">Контакты</a></li>
+                        <!-- <li><a href="#">Контакты</a></li> -->
                     </ul>
 
                     <ul class="nav navbar-nav text-uppercase pull-right">
@@ -89,33 +89,49 @@
     <!--footer start-->
     <div id="footer">
         <div class="footer-instagram-section">
-            <h3 class="footer-instagram-title text-center text-uppercase">Instagram</h3>
+            <h3 class="footer-instagram-title text-center text-uppercase">Facebook</h3>
 
             <div id="footer-instagram" class="owl-carousel">
 
                 <div class="item">
-                    <a href="#"><img src="/img/blog/ins-1.jpg" alt=""></a>
+                    <a href="https://www.facebook.com/decor/photos/a.437212319729965/3323518374432664/?type=3&theater" target="_blank">
+                        <img src="https://scontent.fiev22-2.fna.fbcdn.net/v/t1.0-9/118764627_3323518391099329_8315191808940209231_n.jpg?_nc_cat=101&_nc_sid=8024bb&_nc_ohc=rbxSoTQ_aSoAX8i4wSG&_nc_ht=scontent.fiev22-2.fna&oh=ce9c8b9ff3bf044ff08a23b0bb6e0b5e&oe=5F7CC2B3" alt="">
+                    </a>
                 </div>
                 <div class="item">
-                    <a href="#"><img src="/img/blog/ins-2.jpg" alt=""></a>
+                    <a href="https://www.facebook.com/decor/photos/a.437212319729965/3317661948351640/?type=3&theater" target="_blank">
+                        <img src="https://scontent.fiev22-2.fna.fbcdn.net/v/t1.0-9/118413629_3317661955018306_8257887224121282882_n.jpg?_nc_cat=104&_nc_sid=da1649&_nc_ohc=HH3-27F41EsAX_Rw72P&_nc_ht=scontent.fiev22-2.fna&oh=c7f04a3d4a7c097d7659504dcdd1c600&oe=5F7C1C07" alt="">
+                    </a>
                 </div>
                 <div class="item">
-                    <a href="#"><img src="/img/blog/ins-3.jpg" alt=""></a>
+                    <a href="https://www.facebook.com/decor/photos/a.437212319729965/3313745835409918/?type=3&theater" target="_blank">
+                        <img src="https://scontent.fiev22-1.fna.fbcdn.net/v/t1.0-9/118462747_3313745848743250_2073271619132494706_n.jpg?_nc_cat=103&_nc_sid=8024bb&_nc_ohc=dLLVtTAEMVgAX85Xh3H&_nc_ht=scontent.fiev22-1.fna&oh=ac8a93817c73f259f457f010ddd5fb36&oe=5F7AA0F2" alt="">
+                    </a>
                 </div>
                 <div class="item">
-                    <a href="#"><img src="/img/blog/ins-4.jpg" alt=""></a>
+                    <a href="https://www.facebook.com/decor/photos/a.437212319729965/3313745792076589/?type=3&theater" target="_blank">
+                        <img src="https://scontent.fiev22-2.fna.fbcdn.net/v/t1.0-9/118385109_3313745798743255_4910596556405115291_n.jpg?_nc_cat=101&_nc_sid=8024bb&_nc_ohc=2nJSR4NO360AX8N94sl&_nc_ht=scontent.fiev22-2.fna&oh=383ef0dc3ff93f52098edb1ddc76ed18&oe=5F79CD17" alt="">
+                    </a>
                 </div>
                 <div class="item">
-                    <a href="#"><img src="/img/blog/ins-5.jpg" alt=""></a>
+                    <a href="https://www.facebook.com/decor/photos/a.437212319729965/3306065409511294/?type=3&theater" target="_blank">
+                        <img src="https://scontent.fiev22-2.fna.fbcdn.net/v/t1.0-9/118085447_3306065416177960_6075603015726812656_n.jpg?_nc_cat=104&_nc_sid=8024bb&_nc_ohc=cFN1tXwxCKgAX-OMKX4&_nc_ht=scontent.fiev22-2.fna&oh=4de1ddbf6844199168a6165223aef3de&oe=5F7A0AE7" alt="">
+                    </a>
                 </div>
                 <div class="item">
-                    <a href="#"><img src="/img/blog/ins-6.jpg" alt=""></a>
+                    <a href="https://www.facebook.com/decor/photos/a.437212319729965/3298102170307618/?type=3&theater" target="_blank">
+                        <img src="https://scontent.fiev22-2.fna.fbcdn.net/v/t1.0-9/118291319_3298102183640950_7351675380799751134_n.jpg?_nc_cat=102&_nc_sid=8024bb&_nc_ohc=tJN8cLlKi5AAX9sYwfe&_nc_ht=scontent.fiev22-2.fna&oh=86597942bf0a42a4637f2656fde38ec8&oe=5F7A49BF" alt="">
+                    </a>
                 </div>
                 <div class="item">
-                    <a href="#"><img src="/img/blog/ins-7.jpg" alt=""></a>
+                    <a href="https://www.facebook.com/decor/photos/a.437212319729965/3292545340863301/?type=3&theater" target="_blank">
+                        <img src="https://scontent.fiev22-1.fna.fbcdn.net/v/t1.0-9/s960x960/118346490_3292545347529967_4027776940293205926_o.jpg?_nc_cat=103&_nc_sid=da1649&_nc_ohc=DXiSsgnoHbIAX-oZ0hy&_nc_ht=scontent.fiev22-1.fna&tp=7&oh=9de745ed6abc3ca8621d50cb902ecff6&oe=5F7B84EA" alt="">
+                    </a>
                 </div>
                 <div class="item">
-                    <a href="#"><img src="/img/blog/ins-8.jpg" alt=""></a>
+                    <a href="https://www.facebook.com/decor/photos/a.437212319729965/3283825398401962/?type=3&theater" target="_blank">
+                        <img src="https://scontent.fiev22-2.fna.fbcdn.net/v/t1.0-9/s960x960/117844555_3283825405068628_543403666751202288_o.jpg?_nc_cat=104&_nc_sid=da1649&_nc_ohc=atjjtARBeHYAX_WQJWs&_nc_ht=scontent.fiev22-2.fna&tp=7&oh=8ccf1e3a0c220573e2285212cb931671&oe=5F7BEDA0" alt="">
+                    </a>
                 </div>
 
             </div>
@@ -125,128 +141,30 @@
     <footer class="footer-widget-section">
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-12">
+
                     <aside class="footer-widget">
-                        <div class="about-img"><img src="/img/blog/footer-logo.png" alt=""></div>
-                        <div class="about-content">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-                            nonumy
-                            eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed voluptua. At vero eos et
-                            accusam et justo duo dlores et ea rebum magna text ar koto din.
+                        <div class="col-md-2">
+                            <img class="blog-footer-img" src="/img/blog/logo.svg" width="160" alt="">
                         </div>
-                        <div class="address">
-                            <h4 class="text-uppercase">contact Info</h4>
-
-                            <p> 142/5 BC Street, ES, VSA</p>
-
-                            <p> Phone: +123 456 78900</p>
-
-                            <p>rahim@marlindev.ru</p>
+                        <div class="col-md-10">
+                            <div class="about-content">
+                                Блог создан исключительно в учебных целях, наверное,
+                                сейчас (сентябрь 2020) это лучшее что я склепал на Laravel, но я
+                                не остановлюсь! Каждый день поглощаю кучу знаний, и это
+                                выльется во что-то знатное=)
+                            </div>
                         </div>
                     </aside>
+
                 </div>
 
                 <!-- Carousel -->
-                <div class="col-md-4">
-                    <aside class="footer-widget">
-                        <h3 class="widget-title text-uppercase">Отзывы</h3>
-
-                        <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                            <!--Indicator-->
-                            <ol class="carousel-indicators">
-                                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                                <li data-target="#myCarousel" data-slide-to="1"></li>
-                                <li data-target="#myCarousel" data-slide-to="2"></li>
-                            </ol>
-                            <div class="carousel-inner" role="listbox">
-                                <div class="item active">
-                                    <div class="single-review">
-                                        <div class="review-text">
-                                            <p>Lorem ipsum dolor sit amet, conssadipscing elitr, sed diam nonumy eirmod
-                                                tempvidunt ut labore et dolore magna aliquyam erat,sed diam voluptua. At
-                                                vero eos et accusam justo duo dolores et ea rebum.gubergren no sea
-                                                takimata
-                                                magna aliquyam eratma</p>
-                                        </div>
-                                        <div class="author-id">
-                                            <img src="/img/blog/author.png" alt="">
-
-                                            <div class="author-text">
-                                                <h4>Sophia</h4>
-
-                                                <h4>Client, Tech</h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="single-review">
-                                        <div class="review-text">
-                                            <p>Lorem ipsum dolor sit amet, conssadipscing elitr, sed diam nonumy eirmod
-                                                tempvidunt ut labore et dolore magna aliquyam erat,sed diam voluptua. At
-                                                vero eos et accusam justo duo dolores et ea rebum.gubergren no sea
-                                                takimata
-                                                magna aliquyam eratma</p>
-                                        </div>
-                                        <div class="author-id">
-                                            <img src="/img/blog/author.png" alt="">
-
-                                            <div class="author-text">
-                                                <h4>Sophia</h4>
-
-                                                <h4>Client, Tech</h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="single-review">
-                                        <div class="review-text">
-                                            <p>Lorem ipsum dolor sit amet, conssadipscing elitr, sed diam nonumy eirmod
-                                                tempvidunt ut labore et dolore magna aliquyam erat,sed diam voluptua. At
-                                                vero eos et accusam justo duo dolores et ea rebum.gubergren no sea
-                                                takimata
-                                                magna aliquyam eratma</p>
-                                        </div>
-                                        <div class="author-id">
-                                            <img src="/img/blog/author.png" alt="">
-
-                                            <div class="author-text">
-                                                <h4>Sophia</h4>
-
-                                                <h4>Client, Tech</h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </aside>
-                </div>
+                <!-- include('layouts.inc.footer.carousel') -->
                 <!-- /Carousel -->
 
                 <!-- Custom Post -->
-                @if (isset($randomPost))
-                    <div class="col-md-4">
-                        <aside class="footer-widget">
-                            <h3 class="widget-title text-uppercase">Стоит прочесть</h3>
-
-                            <div class="custom-post">
-                                <div>
-                                    <a href="{{ route('post.show', $randomPost->slug) }}">
-                                        <img src="{{ $randomPost->getImage() }}" alt="">
-                                    </a>
-                                </div>
-                                <div>
-                                    <a href="{{ route('post.show', $randomPost->slug) }}" class="text-uppercase">
-                                        {{ $randomPost->title }}
-                                    </a>
-                                    <span class="p-date">{{ PostHelper::getDate($randomPost) }}</span>
-                                </div>
-                            </div>
-                        </aside>
-                    </div>
-                @endif
+                <!-- include('layouts.inc.footer.custom-post') -->
                 <!-- /Custom Post -->
 
             </div>

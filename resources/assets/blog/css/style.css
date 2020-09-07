@@ -869,13 +869,31 @@ footer instragram
 }
 
 .footer-widget {
-    padding: 70px 0;
+    padding: 6px 0;
 }
 
 .about-content {
-    padding-top: 35px;
+    padding-top: 12px;
+    padding-bottom: 12px;
     line-height: 24px;
     font-family: 'Merriweather', serif
+}
+
+.user-show-content {
+    padding-bottom: 60px;
+}
+
+.user-show-text {
+    padding-top: 30px;
+}
+
+.user-show-text h4 {
+    display: inline;
+}
+
+.blog-footer-img {
+    margin: 6px;
+    padding-top: 12px;
 }
 
 .address {

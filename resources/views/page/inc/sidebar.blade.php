@@ -28,7 +28,7 @@
 
         </aside>
 
-        @if (url()->current() !== route('user.create') && url()->current() !== route('user.login-page') && url()->current() !== route('user.edit'))
+        @if (url()->current() !== route('user.create') && url()->current() !== route('user.login-page') && url()->current() !== route('user.edit') && url()->current() !== route('user.show', $post->author))
 
             <aside class="widget">
                 <h3 class="widget-title text-uppercase text-center">Рекомендуемые</h3>

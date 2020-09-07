@@ -5,7 +5,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Blank page
+                Список постов
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -20,7 +20,6 @@
             <!-- Default box -->
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Список постов</h3>
                     @include('admin.success')
                 </div>
                 <!-- /.box-header -->

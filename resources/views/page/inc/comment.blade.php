@@ -1,10 +1,16 @@
 <div class="top-comment">
     <!--top comment-->
-    <img src="/img/blog/comment.jpg" class="pull-left img-circle" alt="">
-    <h4>Rubel Miah</h4>
+    <a href="{{ route('user.show', $post->author->id) }}" style="display: inline">
+        <img src="{{ $post->author->getImage() }}" class="pull-left img-circle" alt="" height="100">
+    </a>
 
-    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy hello ro mod tempor
-        invidunt ut labore et dolore magna aliquyam erat.</p>
+    <h4>
+        <a href="{{ route('user.show', $post->author->id) }}">
+            {{ $post->author->name }}
+        </a>
+    </h4>
+
+    <p>{{ $post->author->slogan }}</p>
 </div>
 <!--top comment end-->
 <div class="row">
@@ -48,7 +54,7 @@
 <div class="related-post-carousel">
     <!--related post carousel-->
     <div class="related-heading">
-        <h4>You might also like</h4>
+        <h4>Вам также может понравиться</h4>
     </div>
     <div class="items">
         @foreach ($post->related() as $item)
@@ -67,12 +73,14 @@
     @foreach ($post->getComments() as $comment)
         <div class="bottom-comment">
             <!--bottom comment-->
-            <div class="comment-img">
-                <img class="img-circle" src="{{ $comment->author->getImage() }}" alt="" width="75">
+            <div class="comment-img page-comment" style="padding-bottom: 0px">
+                <a href="{{ route('user.show', $post->author->id) }}">
+                    <img class="img-circle" src="{{ $comment->author->getImage() }}" alt="" width="75">
+                </a>
             </div>
 
             <div class="comment-text">
-                <h5>{{ $comment->author->name }}</h5>
+                <h5><a href="{{ route('user.show', $post->author->id) }}">{{ $comment->author->name }}</a></h5>
 
                 <p class="comment-date">
                     {{ $comment->created_at->diffForHumans() }}

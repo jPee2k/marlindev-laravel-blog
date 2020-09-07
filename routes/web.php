@@ -61,6 +61,8 @@ Route::group(
             ->name('user.edit');
         Route::patch('/update', 'AuthController@update')
             ->name('user.update');
+        Route::get('/show/{id}', 'AuthController@show')
+            ->name('user.show');
     }
 );
 

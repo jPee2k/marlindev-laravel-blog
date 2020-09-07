@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUser;
 use Illuminate\Validation\Rule;
@@ -22,6 +23,14 @@ class AuthController extends Controller
         $user = new User();
 
         return view('page.user.register', compact('user'));
+    }
+
+    public function show($id)
+    {
+        $user = User::findOrFail($id);
+        $date = Carbon::parse($user->created_at)->format('d-m-Y');
+
+        return view('page.user.show', compact('user', 'date'));
     }
 
     /**
@@ -111,6 +120,7 @@ class AuthController extends Controller
                 'email',
                 Rule::unique('users', 'email')->ignore($userID)
             ],
+            'slogan' => 'min:2|max:140',
             'password' => [
                 'min:6',
                 'max:255',
