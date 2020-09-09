@@ -14,6 +14,10 @@ class SearchController extends Controller
     {
         $term = $request->get('q');
 
+        if (!$term) {
+            return redirect()->back();
+        }
+
         $posts = Post::where([
             ['status', 1],
             ['title', 'ilike', "%{$term}%"]

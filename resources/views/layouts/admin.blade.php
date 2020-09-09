@@ -201,7 +201,7 @@
                 <!-- search form -->
                 {{ Form::open(['method' => 'GET', 'url' => route('search.index'), 'class' => 'sidebar-form', 'novalidate', 'autocomplete' => 'off']) }}
                 <div class="input-group">
-                    {{ Form::text('q', $term ?? '', ['class' => 'form-control', 'placeholder' => 'Search...']) }}
+                    {{ Form::text('q', $term ?? '', ['class' => 'form-control', 'placeholder' => 'Search...', 'required']) }}
                     <span class="input-group-btn">
                         <button type="submit" name="search" id="search-btn" class="btn btn-flat">
                             <i class="fa fa-search"></i>
