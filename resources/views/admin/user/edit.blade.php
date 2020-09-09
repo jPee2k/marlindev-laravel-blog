@@ -18,7 +18,7 @@
                     <h3 class="box-title">Изменяем данные пользователя</h3>
                     @include('admin.errors')
                 </div>
-                {{ Form::model($user, ['method' => 'PATCH', 'url' => route('users.update', $user), 'files' => 'true']) }}
+                {{ Form::model($user, ['method' => 'PATCH', 'url' => route('users.update', $user), 'files' => 'true', 'novalidate', 'autocomplete' => 'off']) }}
                 <div class="box-body">
                     <div class="col-md-6">
                         @include('admin.user.inc.form')

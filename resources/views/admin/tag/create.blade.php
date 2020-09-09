@@ -18,7 +18,7 @@
                     <h3 class="box-title">Добавляем тег</h3>
                     @include('admin.errors')
                 </div>
-                {{ Form::model($tag, ['url' => route('tags.store')]) }}
+                {{ Form::model($tag, ['url' => route('tags.store'), 'novalidate', 'autocomplete' => 'off']) }}
                 @include('admin.tag.inc.form')
                 <div class="box-footer">
                     <a href="{{ route('tags.index') }}" class="btn btn-default">Назад</a>

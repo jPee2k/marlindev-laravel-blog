@@ -21,6 +21,8 @@
                                 'files' => true,
                                 'role' => 'form',
                                 'class' => 'form-horizontal contact-form',
+                                'novalidate',
+                                'autocomplete' => 'off'
                             ]) }}
 
                         <div class="form-group">

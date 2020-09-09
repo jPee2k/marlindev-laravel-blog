@@ -20,6 +20,8 @@
                                 'url' => route('user.store'),
                                 'class' => 'form-horizontal contact-form',
                                 'role' => 'form',
+                                'novalidate',
+                                'autocomplete' => 'off'
                             ]) }}
                         <div class="form-group">
                             <div class="col-md-12">

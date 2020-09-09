@@ -45,7 +45,7 @@
                                     </td>
                                     <td>
 
-                                        {{ Form::model($comment, ['method' => 'POST', 'url' => route('comments.status', $comment->id)]) }}
+                                        {{ Form::model($comment, ['method' => 'POST', 'url' => route('comments.status', $comment->id), 'novalidate', 'autocomplete' => 'off']) }}
                                         @if ($comment->status === 1)
                                             <button type="submit"
                                                 style="background: transparent; border: none; color: #337ab7; padding: 0px;">

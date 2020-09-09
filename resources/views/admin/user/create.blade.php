@@ -18,7 +18,7 @@
                     <h3 class="box-title">Добавляем пользователя</h3>
                     @include('admin.errors')
                 </div>
-                {{ Form::model($user, ['url' => route('users.store'), 'files' => 'true']) }}
+                {{ Form::model($user, ['url' => route('users.store'), 'files' => 'true', 'novalidate', 'autocomplete' => 'off']) }}
                 <div class="box-body">
                     <div class="col-md-6">
                         @include('admin.user.inc.form')

@@ -199,15 +199,15 @@
                     </div>
                 </div>
                 <!-- search form -->
-                {{ Form::open(['method' => 'GET', 'url' => route('search.index'), 'class' => 'sidebar-form']) }}
-                    <div class="input-group">
-                        {{ Form::text('q', $term ?? '', ['class' => 'form-control', 'placeholder' => 'Search...']) }}
-                        <span class="input-group-btn">
-                            <button type="submit" name="search" id="search-btn" class="btn btn-flat">
-                                <i class="fa fa-search"></i>
-                            </button>
-                        </span>
-                    </div>
+                {{ Form::open(['method' => 'GET', 'url' => route('search.index'), 'class' => 'sidebar-form', 'novalidate', 'autocomplete' => 'off']) }}
+                <div class="input-group">
+                    {{ Form::text('q', $term ?? '', ['class' => 'form-control', 'placeholder' => 'Search...']) }}
+                    <span class="input-group-btn">
+                        <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
                 {{ Form::close() }}
                 <!-- /.search form -->
                 <!-- sidebar menu: : style can be found in sidebar.less -->

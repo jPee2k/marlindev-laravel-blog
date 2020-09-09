@@ -4,7 +4,7 @@
 </div>
 <div class="form-group">
     {{ Form::label('email', 'E-mail') }}
-    {{ Form::email('email', $user->email, ['class' => 'form-control', 'placeholder' => 'Электронный адрес Вашей почты', 'name' => 'email']) }}
+    {{ Form::email('email', $user->email, ['class' => 'form-control', 'placeholder' => 'Электронный адрес Вашей почты']) }}
 </div>
 <div class="form-group">
     {{ Form::label('password', 'Пароль') }}

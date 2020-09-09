@@ -18,7 +18,7 @@
                     <h3 class="box-title">Меняем тег</h3>
                 </div>
                 @include('admin.errors')
-                {{ Form::model($tag, ['method' => 'PATCH', 'url' => route('tags.update', $tag)]) }}
+                {{ Form::model($tag, ['method' => 'PATCH', 'url' => route('tags.update', $tag), 'novalidate', 'autocomplete' => 'off']) }}
                 @include('admin.tag.inc.form')
                 <div class="box-footer">
                     <a href="{{ route('tags.index') }}" class="btn btn-default">Назад</a>

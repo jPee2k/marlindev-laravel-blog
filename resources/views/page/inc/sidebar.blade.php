@@ -3,7 +3,7 @@
         @if (!Auth::user())
             <aside class="widget news-letter">
                 <h3 class="widget-title text-uppercase text-center">Быть в курсе событий</h3>
-                {{ Form::open(['method' => 'POST', 'url' => route('user.subscribe')]) }}
+                {{ Form::open(['method' => 'POST', 'url' => route('user.subscribe'), 'novalidate', 'autocomplete' => 'off']) }}
                 {{ Form::email('email', null, ['placeholder' => 'Ваш адрес эл. почты']) }}
                 {{ Form::submit('Подписаться', ['class' => 'text-uppercase text-center btn btn-subscribe']) }}
                 {{ Form::close() }}

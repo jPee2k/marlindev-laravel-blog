@@ -19,7 +19,7 @@
 
                     @include('admin.errors')
                 </div>
-                {{ Form::model($sub, ['method' => 'post', 'url' => route('subscribers.store')]) }}
+                {{ Form::model($sub, ['method' => 'post', 'url' => route('subscribers.store'), 'novalidate', 'autocomplete' => 'off']) }}
                 <div class="box-body">
                     <div class="col-md-6">
                         <div class="form-group">

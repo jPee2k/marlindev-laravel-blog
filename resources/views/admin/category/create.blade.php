@@ -18,7 +18,7 @@
                     <h3 class="box-title">Добавляем категорию</h3>
                     @include('admin.errors')
                 </div>
-                {{ Form::model($category, ['url' => route('categories.store')]) }}
+                {{ Form::model($category, ['url' => route('categories.store'), 'novalidate', 'autocomplete' => 'off']) }}
                 @include('admin.category.inc.form')
                 <div class="box-footer">
                     <a href="{{ route('categories.index') }}" class="btn btn-default">Назад</a>

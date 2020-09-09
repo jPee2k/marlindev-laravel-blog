@@ -18,7 +18,7 @@
                     <h3 class="box-title">Обновляем статью</h3>
                     @include('admin.errors')
                 </div>
-                {{ Form::model($post, ['method' => 'PATCH', 'url' => route('posts.update', $post), 'files' => true]) }}
+                {{ Form::model($post, ['method' => 'PATCH', 'url' => route('posts.update', $post), 'files' => true, 'novalidate', 'autocomplete' => 'off']) }}
                 <div class="box-body">
                     @include('admin.post.inc.form')
                 </div>

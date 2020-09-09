@@ -21,6 +21,8 @@
                                 'url' => route('user.login'),
                                 'class' => 'form-horizontal contact-form',
                                 'role' => 'form',
+                                'novalidate',
+                                'autocomplete' => 'off'
                             ]) }}
 
                         <div class="form-group">
