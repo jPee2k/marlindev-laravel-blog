@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
@@ -9,6 +9,10 @@
     <meta name="csrf-param" content="_token" />
 
     <!-- favicon icon -->
+    <link rel="icon" type="image/svg" href="/favicon.svg">
+    <link rel="icon" type="image/ico" sizes="16x16" href="/favicon.ico">
+    <link rel="icon" type="image/ico" sizes="32x32" href="/favicon32.ico">
+    <link rel="icon" type="image/ico" sizes="64x64" href="/favicon64.ico">
 
     <title>
         @yield('title')
@@ -32,7 +36,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="{{ route('main.index') }}"><img src="/img/blog/logo.svg" height="30px"
+                    <a class="navbar-brand" href="{{ route('main.index') }}"><img src="/img/blog/logo.svg" height="30"
                             alt=""></a>
                 </div>
 

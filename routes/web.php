@@ -77,12 +77,14 @@ Route::group(
         Route::resource('/tags', 'TagController');
         Route::resource('/users', 'UserController');
         Route::resource('/posts', 'PostController');
+        Route::resource('/subscribers', 'SubscribersController');
         Route::get('/comments', 'CommentController@index')
             ->name('comments.index');
         Route::post('/comments/status/{id}', 'CommentController@status')
             ->name('comments.status');
         Route::delete('/comments/{id}/destroy', 'CommentController@destroy')
             ->name('comments.destroy');
-        Route::resource('/subscribers', 'SubscribersController');
+        Route::get('/search', 'SearchController@index')
+            ->name('search.index');
     }
 );

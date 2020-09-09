@@ -1,12 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="csrf-param" content="_token" />
+
+    <!-- favicon icon -->
+    <link rel="icon" type="image/svg" href="/favicon.svg">
+    <link rel="icon" type="image/ico" sizes="16x16" href="/favicon.ico">
+    <link rel="icon" type="image/ico" sizes="32x32" href="/favicon32.ico">
+    <link rel="icon" type="image/ico" sizes="64x64" href="/favicon64.ico">
 
     <title>
         AdminLTE 2
@@ -193,16 +199,16 @@
                     </div>
                 </div>
                 <!-- search form -->
-                <form action="#" method="get" class="sidebar-form">
+                {{ Form::open(['method' => 'GET', 'url' => route('search.index'), 'class' => 'sidebar-form']) }}
                     <div class="input-group">
-                        <input type="text" name="q" class="form-control" placeholder="Search...">
+                        {{ Form::text('q', $term ?? '', ['class' => 'form-control', 'placeholder' => 'Search...']) }}
                         <span class="input-group-btn">
-                            <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i
-                                    class="fa fa-search"></i>
+                            <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                                <i class="fa fa-search"></i>
                             </button>
                         </span>
                     </div>
-                </form>
+                {{ Form::close() }}
                 <!-- /.search form -->
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu">
