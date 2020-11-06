@@ -272,9 +272,8 @@
             <div class="pull-right hidden-xs">
                 <b>Version</b> 2.3.7
             </div>
-            <strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com/">Almsaeed Studio</a>.</strong> All
-            rights
-            reserved.
+            <strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com/">Almsaeed Studio</a>.</strong>
+            All rights reserved.
         </footer>
 
         <!-- Control Sidebar -->
@@ -477,5 +476,5 @@
     <script src="/plugins/ckfinder/ckfinder.js"></script>
     <script src="{{ asset('js/admin.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
-
+</body>
 </html>

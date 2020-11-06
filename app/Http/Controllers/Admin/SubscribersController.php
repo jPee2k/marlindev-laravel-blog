@@ -14,7 +14,7 @@ class SubscribersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
+    {
         $subs = Subscription::paginate();
 
         return view('admin.subscriber.index', compact('subs'));
@@ -92,7 +92,7 @@ class SubscribersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request, $id)
-    {   
+    {
         $subscription = Subscription::find($id);
 
         if ($subscription) {

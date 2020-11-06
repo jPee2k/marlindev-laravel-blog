@@ -76,8 +76,3 @@ mix.scripts([
 
 mix.copy('resources/assets/blog/fonts', 'public/fonts');
 mix.copy('resources/assets/blog/images', 'public/img/blog');
-
-
-// About-Me-mix
-mix.copy('resources/assets/aboutme/css/style.css', 'public/css');
-mix.copy('resources/assets/aboutme/img/Avatar.jpg', 'public/img');

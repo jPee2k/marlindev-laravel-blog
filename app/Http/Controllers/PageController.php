@@ -24,9 +24,4 @@ class PageController extends Controller
 
         return view('page.post.list', compact('posts', 'category'));
     }
-
-    public function about()
-    {
-        return view('page.about');
-    }
 }

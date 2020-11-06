@@ -22,8 +22,6 @@ Route::get('tags/{slug}', 'PageController@tag')
     ->name('tag.show');
 Route::get('categories/{slug}', 'PageController@category')
     ->name('category.show');
-Route::get('/about-me', 'PageController@about')
-    ->name('pages.about');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::post('/comment', 'CommentController@store')

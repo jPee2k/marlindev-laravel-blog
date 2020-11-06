@@ -44,7 +44,7 @@
 
                     <ul class="nav navbar-nav text-uppercase navbar-left">
                         <li><a href="{{ route('main.index') }}">На главную</a></li>
-                        <li><a href="{{ route('pages.about') }}" target="_blank">Обо мне</a></li>
+                        <li><a href="https://jpee2k.github.io/" target="_blank">Обо мне</a></li>
                         <!-- <li><a href="#">Контакты</a></li> -->
                     </ul>
 
@@ -195,7 +195,7 @@
                     <div class="col-md-12">
                         <div class="text-center">
                             &copy; 2020 <a href="{{ route('main.index') }}">Blog,</a>
-                            Designed with <i class="fa fa-heart"></i> by <a href="{{ route('pages.about') }}"
+                            Designed with <i class="fa fa-heart"></i> by <a href="https://jpee2k.github.io/"
                                 target="blank_">jPee</a>
                         </div>
                     </div>
